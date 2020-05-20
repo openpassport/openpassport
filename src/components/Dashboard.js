@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
                             }
                         </div>
                     </div>
-                    <div>
+                    <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
                     </div>
                 </div >
