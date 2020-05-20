@@ -22,7 +22,6 @@ export function getDestinationBasic(homeId, destinationId) {
     return fetch(`https://api.openpassport.co/api/op/countries/${homeId}/destinations/?country=${destinationId}`, headers)
         .then(data => data.json())
         .then(response => {
-            console.log("######FROM API..", response)
             return response
         })
         .catch(function () {

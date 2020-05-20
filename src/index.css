@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
 * {
   padding: 0;
@@ -13,9 +13,7 @@
 global styles
 **/
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: 'Nunito', sans-serif;
   font-size: 16px;
 }
 a {
@@ -163,4 +161,37 @@ body {
       }
       .dashboard-sidepanel-country-list-item p {
         font-size: 0.8rem;
+      }
+
+/**Country details**/
+ .country-details {
+        flex-grow: 3;
+        position: relative;
+      }
+      .country-details-drawer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #e4e4e4;
+        padding: 2rem 1rem 1rem 1rem;
+        width: 400px;
+        min-height: 100vh;
+      }
+      .country-details-drawer-info {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      .country-details-drawer-info-item {
+        margin: 0.25rem;
+        flex-grow: 1;
+        padding: 0.75rem;
+        background: #ffffff;
+      }
+      .country-details-drawer-info-item p {
+        font-size: 0.9rem;
+      }
+      .country-details-drawer-info-item h5 {
+        font-size: 1rem;
       }
