@@ -32,7 +32,8 @@ class App extends React.Component {
           <Route exact path='/'>
             <div className="container">
               <div className="home-page">
-                <h1>Where can your passport take you?</h1>
+                <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="200px" />
+                <h1>Explore where your passport take you!</h1>
                 {this.props.loading === true
                   ? <div>Loading</div>
                   : <CountryChooser />}

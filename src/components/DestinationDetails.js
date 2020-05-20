@@ -23,11 +23,11 @@ class CountryDetails extends React.Component {
                                 <div className="country-details-drawer-info">
                                     <div className="country-details-drawer-info-item">
                                         <p>Max stay</p>
-                                        <h5>15days</h5>
+                                        <h5>15 Days</h5>
                                     </div>
                                     <div className="country-details-drawer-info-item">
                                         <p>Weather</p>
-                                        <h5>5*c</h5>
+                                        <h5>5°C</h5>
                                     </div>
                                     <div className="country-details-drawer-info-item">
                                         <p>Flight Price</p>

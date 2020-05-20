@@ -31,9 +31,12 @@ code {
 }
 
 input {
+  font-family: 'Nunito', sans-serif;
   width: 500px;
-  font-size: 1rem;
-  padding: 12px;
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border: 1px solid #dadada;
 }
 
 input:focus {
@@ -62,13 +65,16 @@ ul {
   padding: 0 1rem;
 }
 .home-page {
+  padding: 15vmin 0 0 0;
   width: 1200px;
   text-align: center;
   margin: 0 auto;
 }
 
 .home-page h1 {
-  margin-top: 20vmin;
+  font-family: 'Nunito', sans-serif;
+  color: #1f0035;
+  margin-top: 20px;
   font-size: 3rem;
 }
 
@@ -82,7 +88,8 @@ body {
 }
 
 .suggestions {
-  border: 1px solid #ccc;
+  font-family: 'Nunito', sans-serif;
+  border: 1px solid rgb(233, 233, 233);
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
@@ -100,14 +107,13 @@ body {
 
 .suggestion-active,
 .suggestions li:hover {
-  background-color: #008f68;
-  color: #fae042;
+  background-color: #faf2fc;
+  color: #1f0035;
   cursor: pointer;
-  font-weight: 700;
 }
 
 .suggestions li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
 
 .dashboard-container {
@@ -117,12 +123,11 @@ body {
 .dashboard-sidebar {
   max-width: 400px;
   min-height: 100vh;
-  background: rgb(237, 237, 237);
+  background: rgb(255, 255, 255);
   flex-grow: 1;
 }
 
 .dashboard-sidepanel-header {
-        background: CD5C2C;
         padding: 0.5rem 1rem;
       }
       .dashboard-sidepanel-logo {
@@ -134,9 +139,10 @@ body {
         flex-direction: column;
         background: #ffffff;
         padding: 0.5rem 1rem;
+        border: 1px solid #faf2fc;
       }
       .dashboard-sidepanel-country-select-button:hover {
-        background: rgb(247, 242, 226);
+        background: #faf2fc;
       }
       .dashboard-sidepanel-country-select-button .form-label {
         font-size: 0.8rem;
@@ -151,29 +157,38 @@ body {
         padding: 0.75rem 0;
       }
       .dashboard-sidepanel-country-list-item {
-        background: #ededed;
         padding: 0.75rem 1rem;
         margin-top: 0.5rem;
         cursor: pointer;
       }
+      .dashboard-sidepanel-country-list-item:hover{
+        background: #faf2fc;
+      }
       .dashboard-sidepanel-country-list-item h3 {
+        color: #1f0035;
+        font-family: 'Nunito', sans-serif;
         font-size: 1rem;
       }
       .dashboard-sidepanel-country-list-item p {
+        opacity: .7;
+        color: #1f0035;
         font-size: 0.8rem;
       }
 
 /**Country details**/
  .country-details {
+        font-family: 'Nunito', sans-serif;
+        color: #1f0035;
         flex-grow: 3;
         position: relative;
+        background: rgb(227, 227, 227);
       }
       .country-details-drawer {
         position: absolute;
         left: 0;
         top: 0;
-        background: #e4e4e4;
-        padding: 2rem 1rem 1rem 1rem;
+        background: #f2eff2;
+        padding: 2rem;
         width: 400px;
         min-height: 100vh;
       }
