@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { handleDestinationBasicData } from '../actions/shared'
+import { Link } from 'react-router-dom'
 
 class CountryDetails extends React.Component {
     componentDidMount() {
@@ -11,10 +12,14 @@ class CountryDetails extends React.Component {
         console.log("destination etais", destinationDetails)
 
         if (!loading) {
+            console.log("test", this.props.match)
             return (
                 <div className="country-details">
                     <div className="country-details-drawer">
-                        <h1>Country name {this.props.match.params.destinationId}</h1>
+                        <Link to={`/c/${this.props.match.params.id}`} className='details-close'>
+                            <img src={require('../assets/images/close.svg')} width="16px" />
+                        </Link>
+                        <h1>Country {this.props.match.params.destinationId}</h1>
                         {Object.keys(destinationDetails).map((item) => (
                             <div key={destinationDetails[item].id}>
                                 <li>
