@@ -15,13 +15,11 @@ class CountryDetails extends React.Component {
         if (!loading) {
             return (
                 <div>
-
                     {Object.keys(destinationDetails).map((item) => (
                         <li key={destinationDetails[item].id}>
                             {destinationDetails[item].id}
                         </li>
                     ))}
-                    <Link to='/'> Go Home </Link>
                 </div>
             )
         }

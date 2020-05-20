@@ -16,17 +16,32 @@ class Dashboard extends React.Component {
         const { loading, passportValidCountryList } = this.props
         if (!loading) {
             return (
-                <div className='container'>
-                    <h1>Country List</h1>
-                    <ul>
-                        {Object.keys(passportValidCountryList).map((item) => (
-                            <li key={passportValidCountryList[item].id}>
-                                <Link to={`${this.props.match.url}/${passportValidCountryList[item].id}`} >{passportValidCountryList[item].id}</Link>
-                            </li>
-                        ))
-                        }
-                    </ul>
-                    <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
+                <div className='dashboard-container'>
+                    <div className='dashboard-sidebar'>
+                        <div className="dashboard-sidepanel-header">
+                            <div className="dashboard-sidepanel-logo">OpenPassport</div>
+                            <Link className="dashboard-sidepanel-country-select-button" to='/'>
+                                <span className="form-label">Your home country</span>
+                                <span className="form-title">India</span>
+                            </Link>
+                        </div>
+                        <div className="dashboard-sidepanel-country-list">
+                            {Object.keys(passportValidCountryList).map((item) => (
+                                <Link className="dashboard-sidepanel-country-list-item"
+                                    key={passportValidCountryList[item].id}
+                                    to={`${this.props.match.url}/${passportValidCountryList[item].id}`}>
+                                    <h3>
+                                        Country {passportValidCountryList[item].id}
+                                    </h3>
+                                    <p>Continent</p>
+                                </Link>
+                            ))
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
+                    </div>
                 </div >
             )
         }

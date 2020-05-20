@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react"
 import { connect } from 'react-redux'
 import {
-    Link,
     Redirect
 } from 'react-router-dom'
 
@@ -14,10 +13,10 @@ class AutoComplete extends Component {
             activeSuggestion: 0,
             filteredSuggestions: [],
             showSuggestions: false,
-            userInput: "",
-            defaultCountry: {}
+            userInput: ""
         }
-        this.clickMe = this.clickMe.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
     }
 
     onChange = e => {
@@ -26,7 +25,6 @@ class AutoComplete extends Component {
 
         const userInput = e.currentTarget.value;
         const filteredSuggestions = []
-        let i = 0
         countries.forEach((country) => {
             if (country.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1) {
                 var obj = {}
@@ -44,14 +42,7 @@ class AutoComplete extends Component {
         })
     }
 
-    handleOnClick = () => (
-        this.setState({
-            redirect: true
-        })
-    )
-
-
-    clickMe = (e, selectedCountry) => {
+    handleClick = (e, selectedCountry) => {
         this.setState({
             activeSuggestion: 0,
             filteredSuggestions: [],
@@ -63,13 +54,15 @@ class AutoComplete extends Component {
 
     }
 
-    onKeyDown = e => {
+    handleKeyDown = e => {
         const { activeSuggestion, filteredSuggestions } = this.state
         if (e.keyCode === 13) {
             this.setState({
                 activeSuggestion: 0,
                 showSuggestions: false,
-                userInput: filteredSuggestions[activeSuggestion].name
+                userInput: filteredSuggestions[activeSuggestion].name,
+                redirect: true,
+                countrySelect: filteredSuggestions[activeSuggestion]
             })
         }
         else if (e.keyCode === 38) {
@@ -93,8 +86,6 @@ class AutoComplete extends Component {
     render() {
         const {
             onChange,
-            clickMe,
-            onKeyDown,
             state: {
                 activeSuggestion,
                 filteredSuggestions,
@@ -103,9 +94,10 @@ class AutoComplete extends Component {
             }
         } = this
         if (this.state.redirect) {
-            return <Redirect push to={`/c/${this.state.countrySelect.id}`} />;
+            console.log("redirecteddd", this.state.userInput)
+            return <Redirect push to={`/c/${this.state.countrySelect.id}`} />
         }
-        let suggestionsListComponent;
+        let suggestionsListComponent
         const outputLength = Object.keys(filteredSuggestions).length
 
         if (showSuggestions && userInput) {
@@ -113,11 +105,12 @@ class AutoComplete extends Component {
                 suggestionsListComponent = (
                     <ul className="suggestions">
                         {filteredSuggestions.map((item, index) => {
-                            let className;
+                            let className
 
                             if (index === activeSuggestion) {
-                                className = "suggestion-active";
+                                className = "suggestion-active"
                             }
+
                             const selectedCountry = {
                                 name: item.name,
                                 id: item.id
@@ -127,7 +120,7 @@ class AutoComplete extends Component {
                                 <li
                                     className={className}
                                     key={item.id}
-                                    onClick={(e) => this.clickMe(e, selectedCountry)}>
+                                    onClick={(e) => this.handleClick(e, selectedCountry)}>
                                     {item.name}
                                 </li>
                             );
@@ -148,7 +141,7 @@ class AutoComplete extends Component {
                 <input
                     type="text"
                     onChange={onChange}
-                    onKeyDown={onKeyDown}
+                    onKeyDown={(e) => this.handleKeyDown(e)}
                     value={userInput}
                     placeholder="Select your home country"
                 />
