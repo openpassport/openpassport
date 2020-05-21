@@ -33,7 +33,7 @@ class App extends React.Component {
             <div className="container">
               <div className="home-page">
                 <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="200px" />
-                <h1>Explore where your passport take you!</h1>
+                <h1>Explore where your passport can take you!</h1>
                 {this.props.loading === true
                   ? <div>Loading</div>
                   : <CountryChooser />}
