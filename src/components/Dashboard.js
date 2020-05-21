@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { handleSourceCountryData } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
+import Globe from './Globe'
 
 class Dashboard extends React.Component {
     componentDidMount() {
@@ -13,6 +14,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        const position = [51.505, -0.09]
         const { loading, passportValidCountryList } = this.props
         if (!loading) {
             return (
@@ -41,6 +43,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
+                        <Globe />
                     </div>
                 </div >
             )
