@@ -1,13 +1,13 @@
 import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Map, TileLayer } from 'react-leaflet'
 
 class Globe extends React.Component {
     constructor() {
         super();
         this.state = {
-            lat: 51.505,
-            lng: -0.09,
-            zoom: 13,
+            lat: 25.505,
+            lng: 50.09,
+            zoom: 2,
         };
     }
 
@@ -19,8 +19,6 @@ class Globe extends React.Component {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
-                <Marker position={position}>
-                </Marker>
             </Map>
         );
     }

@@ -32,7 +32,10 @@ class App extends React.Component {
           <Route exact path='/'>
             <div className="container">
               <div className="home-page">
-                <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="200px" />
+                <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" />
+                <div className="dashboard-sidepanel-logo">
+                  <img alt='OpenPassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                </div>
                 <h1>Explore where your passport can take you!</h1>
                 {this.props.loading === true
                   ? <div>Loading</div>
@@ -40,7 +43,7 @@ class App extends React.Component {
               </div>
             </div>
           </Route>
-          <Route path='/c/:id' component={Dashboard} />
+          <Route path='/:id' component={Dashboard} />
           <Route component={NoMatch} />
         </Switch>
       </BrowserRouter>

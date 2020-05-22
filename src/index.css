@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
   padding: 0;
@@ -13,7 +13,7 @@
 global styles
 **/
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
 }
 a {
@@ -31,7 +31,7 @@ code {
 }
 
 input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
   width: 500px;
   font-size: 1.3rem;
   padding: 1rem;
@@ -65,17 +65,16 @@ ul {
   padding: 0 1rem;
 }
 .home-page {
-  padding: 15vmin 0 0 0;
+  padding: 10vmin 0 0 0;
   width: 1200px;
   text-align: center;
   margin: 0 auto;
 }
 
 .home-page h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #33363F;
-  margin-top: 20px;
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 body {
@@ -88,7 +87,7 @@ body {
 }
 
 .suggestions {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
   border: 1px solid rgb(233, 233, 233);
   border-top-width: 0;
   list-style: none;
@@ -134,11 +133,10 @@ body {
         padding: 0.5rem 1rem;
       }
       .dashboard-sidepanel-logo {
-        font-size: 1.2rem;
-        padding: 1rem 0;
+        padding: 1rem 0 2rem 0;
       }
       .dashboard-sidepanel-country-select-button {
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Inter', sans-serif;
         display: flex;
         flex-direction: column;
         background: #ffffff;
@@ -173,14 +171,15 @@ body {
       }
       .dashboard-sidepanel-country-list-item h3 {
         color: #33363F;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.1rem;
       }
       .dashboard-sidepanel-country-list-item p {
-        font-family: 'Nunito', sans-serif;
+        margin-top: .1rem;
+        font-family: 'Inter', sans-serif;
         opacity: .7;
         color: #33363F;
-        font-size: 1rem;
+        font-size: .9rem;
       }
 
 
@@ -190,7 +189,7 @@ body {
       }
 /**Country details**/
  .country-details {
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Inter', sans-serif;
         color: #33363F;
         flex-grow: 3;
         position: relative;
@@ -200,7 +199,7 @@ body {
         left: 0;
         top: 0;
         background: rgb(248, 249, 250);
-        padding: 2rem;
+        padding: 1.25rem;
         width: 400px;
         min-height: 100vh;
         -moz-box-shadow:    inset 0 0 5px #F3F6F9;
@@ -219,14 +218,39 @@ body {
         flex-grow: 1;
         padding: 0.75rem;
         background: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+      .country-details-drawer-info-item div:nth-child(1) {
+        margin-right: 12px;
       }
       .country-details-drawer-info-item p {
+        opacity: .8;
         font-size: 0.9rem;
       }
       .country-details-drawer-info-item h5 {
         font-size: 1rem;
       }
-
+      .country-details-drawer-subsection {
+        padding: 1.5rem 0;
+      }
+      .country-details-drawer-subsection h5 {
+        color: #808080;
+        font-weight: 500;
+        letter-spacing: 2px;
+        padding-bottom: .5rem;
+        font-size: .8rem;
+      }
+      .country-details-drawer-subsection p {
+        line-height: 150%;
+        letter-spacing: -.2px;
+        font-size: 1rem;
+      }
+      .country-details-drawer-subsection li {
+        list-style: none;
+        line-height: 180%;
+        font-size: 1rem;
+      }
       .details-close {
         position: absolute;
         width: 2.5rem;

@@ -14,28 +14,29 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        const position = [51.505, -0.09]
         const { loading, passportValidCountryList } = this.props
         if (!loading) {
             return (
                 <div className='dashboard-container'>
                     <div className='dashboard-sidebar'>
                         <div className="dashboard-sidepanel-header">
-                            <div className="dashboard-sidepanel-logo">OpenPassport</div>
+                            <div className="dashboard-sidepanel-logo">
+                                <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                            </div>
                             <Link className="dashboard-sidepanel-country-select-button" to='/'>
                                 <span className="form-label">Your home country</span>
                                 <span className="form-title">India</span>
                             </Link>
                         </div>
                         <div className="dashboard-sidepanel-country-list">
-                            {Object.keys(passportValidCountryList).map((item) => (
+                            {Object.values(passportValidCountryList).map((item, i) => (
                                 <Link className="dashboard-sidepanel-country-list-item"
-                                    key={passportValidCountryList[item].id}
-                                    to={`${this.props.match.url}/${passportValidCountryList[item].id}`}>
+                                    key={i}
+                                    to={`${this.props.match.url}/${item.destination.id}`}>
                                     <h3>
-                                        Country {passportValidCountryList[item].id}
+                                        {item.destination.name}
                                     </h3>
-                                    <p>Continent</p>
+                                    <p>{item.destination.subregion} {item.destination.capital}  </p>
                                 </Link>
                             ))
                             }
@@ -58,6 +59,7 @@ class Dashboard extends React.Component {
 }
 
 function mapStateToProps({ passportValidCountryList }) {
+    console.log("destination from source***********", passportValidCountryList)
     return {
         loading: passportValidCountryList === null,
         passportValidCountryList,

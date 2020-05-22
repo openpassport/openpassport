@@ -9,37 +9,58 @@ class CountryDetails extends React.Component {
     }
     render() {
         const { loading, destinationDetails } = this.props
-        console.log("destination etais", destinationDetails)
 
         if (!loading) {
-            console.log("test", this.props.match)
             return (
                 <div className="country-details">
                     <div className="country-details-drawer">
-                        <Link to={`/c/${this.props.match.params.id}`} className='details-close'>
-                            <img src={require('../assets/images/close.svg')} width="16px" />
+                        <Link to={`/${this.props.match.params.id}`} className='details-close'>
+                            <img alt='close' src={require('../assets/images/close.svg')} width="16px" />
                         </Link>
-                        <h1>Country {this.props.match.params.destinationId}</h1>
-                        {Object.keys(destinationDetails).map((item) => (
-                            <div key={destinationDetails[item].id}>
-                                <li>
-                                    {destinationDetails[item].id}
-                                </li>
+                        {Object.values(destinationDetails).map((item) => (
+                            <div key={item.destination.id}>
+                                <div className="country-details-drawer-info">
+                                    <img alt='flag' src={`https://openpassport.co/static/${item.destination.flag}`} width="52px" style={{ marginRight: "8px" }} />
+                                    <h1>{item.destination.name}</h1>
+
+                                </div>
+                                <div className='country-details-drawer-subsection'>
+                                    <h5>ABOUT</h5>
+                                    <p>
+                                        Thailand is a Southeast Asian country. It's known for tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha.
+                                    </p>
+                                </div>
                                 <div className="country-details-drawer-info">
                                     <div className="country-details-drawer-info-item">
-                                        <p>Max stay</p>
-                                        <h5>15 Days</h5>
+                                        <div>
+                                            <img src={require('../assets/images/weather.svg')} width='52px' />
+                                        </div>
+                                        <div>
+                                            <p>Weather</p>
+                                            <h5>5°C</h5>
+                                        </div>
                                     </div>
                                     <div className="country-details-drawer-info-item">
-                                        <p>Weather</p>
-                                        <h5>5°C</h5>
-                                    </div>
-                                    <div className="country-details-drawer-info-item">
-                                        <p>Flight Price</p>
-                                        <h5>$740+</h5>
+                                        <div>
+                                            <img src={require('../assets/images/flight.svg')} width='52px' />
+                                        </div>
+                                        <div>
+                                            <p>Flight Price</p>
+                                            <h5>$740+</h5>
+                                        </div>
                                     </div>
                                 </div>
-                                {destinationDetails[item].details}
+                                <div className='country-details-drawer-subsection'>
+                                    <h5>VISA REQUIREMENTS</h5>
+                                    <ul>
+                                        <li>Visa application form</li>
+                                        <li>Passport photo</li>
+                                        <li>Passport</li>
+                                        <li>Hotel bookings</li>
+                                        <li>Flight bookings</li>
+                                    </ul>
+                                </div>
+
                             </div>
                         ))}
                     </div>
