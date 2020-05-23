@@ -12,8 +12,9 @@ import {
 import DestinationDetails from './DestinationDetails'
 
 const Map = ReactMapboxGl({
-    accessToken:
-        'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
+    accessToken: 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA',
+    logoPosition: "top-right",
+    attributionControl: false
 })
 
 class Dashboard extends React.Component {
@@ -68,6 +69,7 @@ class Dashboard extends React.Component {
                             }}
                             center={[this.props.sourceCountry.longitude, this.props.sourceCountry.latitude]}
                             zoom={[4]}
+                            movingMethod="flyTo"
                         >
                         </Map>
                     </div>
