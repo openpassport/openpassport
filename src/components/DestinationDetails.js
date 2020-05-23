@@ -74,9 +74,9 @@ class CountryDetails extends React.Component {
     }
 }
 
-function mapStateToProps({ destinationDetails }) {
+function mapStateToProps({ sourceCountry, destinationDetails }) {
     return {
-        loading: destinationDetails === null,
+        loading: sourceCountry === null,
         destinationDetails
     }
 }
