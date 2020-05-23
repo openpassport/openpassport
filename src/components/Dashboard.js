@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 import {
     Route,
     Link
@@ -9,33 +10,27 @@ import {
     handleSourceCountry
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
-import mapboxgl from 'mapbox-gl'
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
 
+const Map = ReactMapboxGl({
+    accessToken: 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA',
+    logoPosition: "top-right",
+    attributionControl: false
+})
 
 class Dashboard extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            lng: 5,
-            lat: 34,
-            zoom: 2
+            sourceCountry: {}
         }
     }
     componentDidMount() {
         this.props.dispatch(handleSourceCountryData(this.props.match.params.id))
         this.props.dispatch(handleSourceCountry(this.props.match.params.id))
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom
-        })
     }
 
     render() {
         const { loading, sourceCountry, passportValidCountryList } = this.props
-        console.log("%^^^^%%%%%%", passportValidCountryList)
         if (!loading) {
             return (
                 <div className='dashboard-container'>
@@ -59,7 +54,7 @@ class Dashboard extends React.Component {
                                     <h3>
                                         {item.destination.name}
                                     </h3>
-                                    <p>{item.destination.subregion} {item.destination.capital}  </p>
+                                    <p>{item.destination.subregion} ▫ {item.destination.capital}  </p>
                                 </Link>
                             ))
                             }
@@ -67,7 +62,16 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
-                        <div ref={el => this.mapContainer = el} className="mapContainer" />
+                        <Map
+                            style="mapbox://styles/mapbox/streets-v11"
+                            containerStyle={{
+                                height: '100vh',
+                            }}
+                            center={[this.props.sourceCountry.longitude, this.props.sourceCountry.latitude]}
+                            zoom={[4]}
+                            movingMethod="flyTo"
+                        >
+                        </Map>
                     </div>
                 </div >
             )
@@ -82,9 +86,8 @@ class Dashboard extends React.Component {
 }
 
 function mapStateToProps({ sourceCountry, passportValidCountryList }) {
-
     return {
-        loading: passportValidCountryList === null,
+        loading: sourceCountry === null,
         passportValidCountryList,
         sourceCountry
     }
