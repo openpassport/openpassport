@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
 
     render() {
         const { loading, sourceCountry, passportValidCountryList } = this.props
+        console.log("%^^^^%%%%%%", passportValidCountryList)
         if (!loading) {
             return (
                 <div className='dashboard-container'>

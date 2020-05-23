@@ -9,7 +9,6 @@ class CountryDetails extends React.Component {
     }
     render() {
         const { loading, destinationDetails } = this.props
-
         if (!loading) {
             return (
                 <div className="country-details">
