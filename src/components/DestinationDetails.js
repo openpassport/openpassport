@@ -9,7 +9,6 @@ class CountryDetails extends React.Component {
     }
     render() {
         const { loading, destinationDetails } = this.props
-
         if (!loading) {
             return (
                 <div className="country-details">
@@ -33,7 +32,7 @@ class CountryDetails extends React.Component {
                                 <div className="country-details-drawer-info">
                                     <div className="country-details-drawer-info-item">
                                         <div>
-                                            <img src={require('../assets/images/weather.svg')} width='52px' />
+                                            <img alt='weather' src={require('../assets/images/weather.svg')} width='52px' />
                                         </div>
                                         <div>
                                             <p>Weather</p>
@@ -42,7 +41,7 @@ class CountryDetails extends React.Component {
                                     </div>
                                     <div className="country-details-drawer-info-item">
                                         <div>
-                                            <img src={require('../assets/images/flight.svg')} width='52px' />
+                                            <img alt='flight' src={require('../assets/images/flight.svg')} width='52px' />
                                         </div>
                                         <div>
                                             <p>Flight Price</p>

@@ -9,16 +9,33 @@ import {
     handleSourceCountry
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
-import Globe from './Globe'
+import mapboxgl from 'mapbox-gl'
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
+
 
 class Dashboard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            lng: 5,
+            lat: 34,
+            zoom: 2
+        }
+    }
     componentDidMount() {
         this.props.dispatch(handleSourceCountryData(this.props.match.params.id))
         this.props.dispatch(handleSourceCountry(this.props.match.params.id))
+        const map = new mapboxgl.Map({
+            container: this.mapContainer,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.lng, this.state.lat],
+            zoom: this.state.zoom
+        })
     }
 
     render() {
         const { loading, sourceCountry, passportValidCountryList } = this.props
+        console.log("%^^^^%%%%%%", passportValidCountryList)
         if (!loading) {
             return (
                 <div className='dashboard-container'>
@@ -50,7 +67,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
-                        <Globe />
+                        <div ref={el => this.mapContainer = el} className="mapContainer" />
                     </div>
                 </div >
             )
