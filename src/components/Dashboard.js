@@ -4,17 +4,21 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-import { handleSourceCountryData } from '../actions/shared'
+import {
+    handleSourceCountryData,
+    handleSourceCountry
+} from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
 import Globe from './Globe'
 
 class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(handleSourceCountryData(this.props.match.params.id))
+        this.props.dispatch(handleSourceCountry(this.props.match.params.id))
     }
 
     render() {
-        const { loading, passportValidCountryList } = this.props
+        const { loading, sourceCountry, passportValidCountryList } = this.props
         if (!loading) {
             return (
                 <div className='dashboard-container'>
@@ -23,10 +27,12 @@ class Dashboard extends React.Component {
                             <div className="dashboard-sidepanel-logo">
                                 <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
                             </div>
-                            <Link className="dashboard-sidepanel-country-select-button" to='/'>
-                                <span className="form-label">Your home country</span>
-                                <span className="form-title">India</span>
-                            </Link>
+                            {sourceCountry &&
+                                <Link className="dashboard-sidepanel-country-select-button" to='/'>
+                                    <span className="form-label">Your home country</span>
+                                    <span className="form-title">{sourceCountry.name}</span>
+                                </Link>
+                            }
                         </div>
                         <div className="dashboard-sidepanel-country-list">
                             {Object.values(passportValidCountryList).map((item, i) => (
@@ -58,11 +64,12 @@ class Dashboard extends React.Component {
 
 }
 
-function mapStateToProps({ passportValidCountryList }) {
-    console.log("destination from source***********", passportValidCountryList)
+function mapStateToProps({ sourceCountry, passportValidCountryList }) {
+
     return {
         loading: passportValidCountryList === null,
         passportValidCountryList,
+        sourceCountry
     }
 
 }

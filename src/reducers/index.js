@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import countries from './countries'
-import authedUser from './authedUser'
+import sourceCountry from './setSourceCountry'
 import passportValidCountryList from './passportValidCountryList'
 import destinationDetails from './destinationDetails'
 
 export default combineReducers({
-    authedUser,
+    sourceCountry,
     countries,
     passportValidCountryList,
     destinationDetails

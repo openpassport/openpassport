@@ -1,21 +1,29 @@
 import {
     getAllCountries,
     getPassportDetailsForCountry,
-    getDestinationBasic
+    getDestinationBasic,
+    getSourceCountry
 } from '../utils/api'
 import { getCountryNames } from './countryName'
 import { getPassportValidCountryList } from './passportValidCountryList'
-import { setAuthedUser } from './authedUser'
+import { setSourceCountry } from './setSourceCountry'
 import { getDestinationDetails } from './destinationDetails'
 
-const AUTHED_ID = 'tylermcginnis'
 
 export function handleInitialData() {
     return (dispatch) => {
         return getAllCountries()
             .then((countries) => {
                 dispatch(getCountryNames(countries))
-                dispatch(setAuthedUser(AUTHED_ID))
+            })
+    }
+}
+
+export function handleSourceCountry(homeId) {
+    return (dispatch) => {
+        return getSourceCountry(homeId)
+            .then((country) => {
+                dispatch(setSourceCountry(country))
             })
     }
 }
