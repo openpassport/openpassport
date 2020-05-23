@@ -4,22 +4,12 @@ import { handleDestinationBasicData } from '../actions/shared'
 import { Link } from 'react-router-dom'
 
 class CountryDetails extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sourceId: this.props.match.params.id,
-            desId: this.props.match.params.destinationId
-        }
-    }
     componentDidMount() {
-        this.props.dispatch(handleDestinationBasicData(this.state.sourceId, this.props.match.params.destinationId))
+        this.props.dispatch(handleDestinationBasicData(this.props.match.params.id, this.props.match.params.destinationId))
     }
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.desId !== this.props.match.params.destinationId) {
-            this.props.dispatch(handleDestinationBasicData(this.state.sourceId, this.props.match.params.destinationId))
-            this.setState({
-                desId: this.props.match.params.destinationId
-            })
+        if (prevProps.match.params.destinationId !== this.props.match.params.destinationId) {
+            this.props.dispatch(handleDestinationBasicData(this.props.match.params.id, this.props.match.params.destinationId))
         }
     }
     render() {
