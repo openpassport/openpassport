@@ -1,13 +1,12 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
-import { connect } from 'react-redux'
 
-
+let map = null
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
 
 class MapBox extends React.Component {
     componentDidMount() {
-        const map = new mapboxgl.Map({
+        map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
@@ -23,8 +22,13 @@ class MapBox extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("safasfljlkajlkfjkal")
-
+        if (prevProps.sourceCountry.id !== this.props.sourceCountry.id) {
+            console.log("ghjh *********PROPS CHANGEDD***********")
+            map.flyTo({
+                center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
+                essential: true
+            });
+        }
     }
 
     render() {
@@ -36,11 +40,4 @@ class MapBox extends React.Component {
     }
 }
 
-function mapStateToProps({ sourceCountry }) {
-    return {
-        sourceCountry
-    }
-}
-
-
-export default connect(mapStateToProps)(MapBox)
+export default MapBox
