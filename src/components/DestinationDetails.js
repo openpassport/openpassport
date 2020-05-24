@@ -80,7 +80,6 @@ class CountryDetails extends React.Component {
 }
 
 function mapStateToProps({ sourceCountry, destinationDetails }) {
-    console.log("12539719875289719", destinationDetails)
     return {
         loading: sourceCountry === null,
         destinationDetails

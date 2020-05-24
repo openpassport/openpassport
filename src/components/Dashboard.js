@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
+import mapboxgl from 'mapbox-gl';
 import {
     Route,
     Link
@@ -10,21 +10,12 @@ import {
     handleSourceCountry
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
-
-const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA',
-    logoPosition: "top-right",
-    attributionControl: false
-})
+import MapBox from './MapBox'
 
 class Dashboard extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sourceCountry: {}
-        }
-    }
+
     componentDidMount() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
         this.props.dispatch(handleSourceCountryData(this.props.match.params.id))
         this.props.dispatch(handleSourceCountry(this.props.match.params.id))
     }
@@ -62,16 +53,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
-                        <Map
-                            style="mapbox://styles/mapbox/streets-v11"
-                            containerStyle={{
-                                height: '100vh',
-                            }}
-                            center={[this.props.sourceCountry.longitude, this.props.sourceCountry.latitude]}
-                            zoom={[4]}
-                            movingMethod="flyTo"
-                        >
-                        </Map>
+                        <MapBox sourceCountry={sourceCountry} />
                     </div>
                 </div >
             )
