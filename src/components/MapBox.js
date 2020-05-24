@@ -19,6 +19,7 @@ class MapBox extends React.Component {
                 zoom: map.getZoom().toFixed(2)
             })
         })
+        map.addControl(new mapboxgl.NavigationControl())
     }
 
     componentDidUpdate(prevProps, prevState) {

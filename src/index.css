@@ -182,11 +182,6 @@ body {
         font-size: .9rem;
       }
 
-
-      .map {
-        height: 100vh;
-        z-index: 2;
-      }
 /**Country details**/
  .country-details {
         font-family: 'Inter', sans-serif;
@@ -210,6 +205,7 @@ body {
       .country-details-drawer-info {
         display: flex;
         flex-direction: row;
+        align-items: center;
         width: 100%;
         margin-top: 0.5rem;
       }
@@ -266,9 +262,9 @@ body {
       }
 
 .mapContainer {
-position: absolute;
-top: 0;
-right: 0;
-left: 0;
-bottom: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }

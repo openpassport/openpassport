@@ -24,7 +24,7 @@ class CountryDetails extends React.Component {
                         {Object.values(destinationDetails).map((item) => (
                             <div key={item.destination.id}>
                                 <div className="country-details-drawer-info">
-                                    <img alt='flag' src={`https://openpassport.co/static/${item.destination.flag}`} width="52px" style={{ marginRight: "8px" }} />
+                                    <img alt='flag' src={`https://openpassport.co/static/${item.destination.flag}`} height="24px" style={{ marginRight: "8px" }} />
                                     <h1>{item.destination.name}</h1>
 
                                 </div>
