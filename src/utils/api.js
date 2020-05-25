@@ -3,12 +3,13 @@ const headers = {
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Token 1e6bc64496f5ca8c30ac93c0f0e74ee056f54704"
+        Authorization: "Token 8ad58842993051aa807c8d3c4c6eb9a34a8e394c"
     }
 }
 
-export function getPassportDetailsForCountry(homeId) {
-    return fetch(`https://api.openpassport.co/api/op/countries/${homeId}/destinations/`, headers)
+export function getPassportDetailsForCountry(home) {
+    console.log("12412414124", home)
+    return fetch(`https://api.openpassport.co/api/op/countries/${home}/destinations/`, headers)
         .then(data => data.json())
         .then(response => {
             return response
@@ -18,8 +19,8 @@ export function getPassportDetailsForCountry(homeId) {
         })
 }
 
-export function getSourceCountry(homeId) {
-    return fetch(`https://api.openpassport.co/api/op/countries/${homeId}/`, headers)
+export function getSourceCountry(home) {
+    return fetch(`https://api.openpassport.co/api/op/countries/${home}/`, headers)
         .then(data => data.json())
         .then(response => {
             return response

@@ -30,8 +30,8 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/'>
-            <div className="container">
-              <div className="home-page">
+            <div className="home-section">
+              <div className="container">
                 <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" />
                 <div className="dashboard-sidepanel-logo">
                   <img alt='OpenPassport' src={require('../assets/images/op-logo.svg')} width='175px' />
@@ -42,8 +42,11 @@ class App extends React.Component {
                   : <CountryChooser />}
               </div>
             </div>
+            <div className="about-section">
+            </div>
           </Route>
-          <Route path='/:id' component={Dashboard} />
+          <Route path='/undefined' component={NoMatch} />
+          <Route path='/:homeSlug' component={Dashboard} />
           <Route component={NoMatch} />
         </Switch>
       </BrowserRouter>

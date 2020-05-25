@@ -28,7 +28,7 @@ class AutoComplete extends Component {
         countries.forEach((country) => {
             if (country.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1) {
                 var obj = {}
-                obj["id"] = country.id
+                obj["slug"] = country.slug
                 obj["name"] = country.name
                 obj["flag"] = country.flag
                 filteredSuggestions.push(obj)
@@ -95,7 +95,7 @@ class AutoComplete extends Component {
             }
         } = this
         if (this.state.redirect) {
-            return <Redirect to={`/${this.state.countrySelect.id}`} />
+            return <Redirect to={`/${this.state.countrySelect.slug}`} />
         }
         let suggestionsListComponent
         const outputLength = Object.keys(filteredSuggestions).length
@@ -113,13 +113,13 @@ class AutoComplete extends Component {
 
                             const selectedCountry = {
                                 name: item.name,
-                                id: item.id,
+                                slug: item.slug,
                                 flag: item.flag
                             }
                             return (
                                 <li
                                     className={className}
-                                    key={item.id}
+                                    key={item.slug}
                                     onClick={(e) => this.handleClick(e, selectedCountry)}>
                                     <img alt='flag' src={`https://openpassport.co/static/${item.flag}`} width="24px" style={{ marginRight: "8px" }} />
                                     {item.name}

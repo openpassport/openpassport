@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 
 class CountryDetails extends React.Component {
     componentDidMount() {
-        this.props.dispatch(handleDestinationBasicData(this.props.match.params.id, this.props.match.params.destinationId))
+        this.props.dispatch(handleDestinationBasicData(this.props.match.params.homeSlug, this.props.match.params.destinationSlug))
     }
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.match.params.destinationId !== this.props.match.params.destinationId) {
-            this.props.dispatch(handleDestinationBasicData(this.props.match.params.id, this.props.match.params.destinationId))
+        if (prevProps.match.params.destinationSlug !== this.props.match.params.destinationSlug) {
+            this.props.dispatch(handleDestinationBasicData(this.props.match.params.homeSlug, this.props.match.params.destinationSlug))
         }
     }
     render() {
@@ -18,7 +18,7 @@ class CountryDetails extends React.Component {
             return (
                 <div className="country-details">
                     <div className="country-details-drawer">
-                        <Link to={`/${this.props.match.params.id}`} className='details-close'>
+                        <Link to={`/${this.props.match.params.homeSlug}`} className='details-close'>
                             <img alt='close' src={require('../assets/images/close.svg')} width="16px" />
                         </Link>
                         {Object.values(destinationDetails).map((item) => (
@@ -26,7 +26,6 @@ class CountryDetails extends React.Component {
                                 <div className="country-details-drawer-info">
                                     <img alt='flag' src={`https://openpassport.co/static/${item.destination.flag}`} height="24px" style={{ marginRight: "8px" }} />
                                     <h1>{item.destination.name}</h1>
-
                                 </div>
                                 <div className='country-details-drawer-subsection'>
                                     <h5>ABOUT</h5>
@@ -56,12 +55,11 @@ class CountryDetails extends React.Component {
                                 </div>
                                 <div className='country-details-drawer-subsection'>
                                     <h5>VISA REQUIREMENTS</h5>
+                                    {item.requirement.map((listitem) => (
+                                        <li>{listitem}</li>
+                                    ))}
                                     <ul>
                                         <li>Visa application form</li>
-                                        <li>Passport photo</li>
-                                        <li>Passport</li>
-                                        <li>Hotel bookings</li>
-                                        <li>Flight bookings</li>
                                     </ul>
                                 </div>
 
