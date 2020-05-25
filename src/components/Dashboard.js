@@ -1,23 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import mapboxgl from 'mapbox-gl';
 import {
     Route,
     Link
 } from 'react-router-dom'
 import {
     handleSourceCountryData,
-    handleSourceCountry
+    handleSourceCountry,
+    handleResetSourceDes
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
 import MapBox from './MapBox'
 
 class Dashboard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.clickToDrawer = this.clickToDrawer.bind(this)
+    }
+
+    clickToDrawer = () => {
+        this.props.dispatch(handleResetSourceDes())
+    }
 
     componentDidMount() {
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
-        this.props.dispatch(handleSourceCountryData(this.props.match.params.id))
-        this.props.dispatch(handleSourceCountry(this.props.match.params.id))
+        this.props.dispatch(handleSourceCountryData(this.props.match.params.homeSlug))
+        this.props.dispatch(handleSourceCountry(this.props.match.params.homeSlug))
     }
 
     render() {
@@ -31,7 +38,10 @@ class Dashboard extends React.Component {
                                 <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
                             </div>
                             {sourceCountry &&
-                                <Link className="dashboard-sidepanel-country-select-button" to='/'>
+                                <Link
+                                    className="dashboard-sidepanel-country-select-button"
+                                    onClick={() => this.clickToDrawer()}
+                                    to='/'>
                                     <span className="form-label">Your home country</span>
                                     <span className="form-title">{sourceCountry.name}</span>
                                 </Link>
@@ -41,26 +51,31 @@ class Dashboard extends React.Component {
                             {Object.values(passportValidCountryList).map((item, i) => (
                                 <Link className="dashboard-sidepanel-country-list-item"
                                     key={i}
-                                    to={`${this.props.match.url}/${item.destination.id}`}>
+                                    to={`${this.props.match.url}/${item.destination.slug}`} >
                                     <h3>
                                         {item.destination.name}
                                     </h3>
-                                    <p>{item.destination.subregion} ▫ {item.destination.capital}  </p>
+                                    <p>{item.destination.capital}  </p>
                                 </Link>
                             ))
                             }
                         </div>
                     </div>
                     <div className="country-details">
-                        <Route path={`${this.props.match.path}/:destinationId`} component={DestinationDetails} />
-                        <MapBox sourceCountry={sourceCountry} />
+                        <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
+                        <MapBox />
                     </div>
                 </div >
             )
         }
         else {
             return (
-                <div> Loading</div>
+                <div className='dashboard-loading'>
+                    <div>
+                        <img alt="loading indicator" src={require('../assets/images/load.svg')} width="60px" height="60px" />
+                    Loading
+                    </div>
+                </div>
             )
         }
     }
@@ -69,7 +84,7 @@ class Dashboard extends React.Component {
 
 function mapStateToProps({ sourceCountry, passportValidCountryList }) {
     return {
-        loading: sourceCountry === null,
+        loading: (sourceCountry === null) || (Object.keys(sourceCountry).length === 0),
         passportValidCountryList,
         sourceCountry
     }

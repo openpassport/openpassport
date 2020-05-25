@@ -8,7 +8,8 @@ import { getCountryNames } from './countryName'
 import { getPassportValidCountryList } from './passportValidCountryList'
 import { setSourceCountry } from './setSourceCountry'
 import { getDestinationDetails } from './destinationDetails'
-
+import { resetSource } from './resetSource'
+import { resetDestination } from './resetDestination'
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -19,18 +20,18 @@ export function handleInitialData() {
     }
 }
 
-export function handleSourceCountry(homeId) {
+export function handleSourceCountry(home) {
     return (dispatch) => {
-        return getSourceCountry(homeId)
+        return getSourceCountry(home)
             .then((country) => {
                 dispatch(setSourceCountry(country))
             })
     }
 }
 
-export function handleSourceCountryData(id) {
+export function handleSourceCountryData(slug) {
     return (dispatch) => {
-        return getPassportDetailsForCountry(id)
+        return getPassportDetailsForCountry(slug)
             .then((countries) => {
                 dispatch(getPassportValidCountryList(countries))
             })
@@ -43,5 +44,12 @@ export function handleDestinationBasicData(homeId, destinationId) {
             .then((destination) => {
                 dispatch(getDestinationDetails(destination))
             })
+    }
+}
+
+export function handleResetSourceDes() {
+    return (dispatch) => {
+        dispatch(resetSource())
+        dispatch(resetDestination())
     }
 }
