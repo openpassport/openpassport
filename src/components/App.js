@@ -32,15 +32,19 @@ class App extends React.Component {
           <Route exact path='/'>
             <div className="home-section">
               <div className="container">
-                <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" />
+                {/* <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" /> */}
                 <div className="dashboard-sidepanel-logo">
-                  <img alt='OpenPassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                  <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} width='300px' />
                 </div>
                 <h1>Explore where your passport can take you!</h1>
                 {this.props.loading === true
                   ? <div>Loading</div>
                   : <CountryChooser />}
               </div>
+              <video autoPlay muted loop className="hero-video">
+                <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
+                  Your browser does not support HTML5 video.
+              </video>
             </div>
             <div className="about-section">
             </div>

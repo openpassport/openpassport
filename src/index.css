@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 
 * {
   padding: 0;
@@ -31,19 +32,6 @@ code {
   text-align: center;
 }
 
-input {
-  font-family: 'Inter', sans-serif;
-  width: 500px;
-  font-size: 1.3rem;
-  padding: 1rem;
-  margin-top: 1.5rem;
-  border: 1px solid #dadada;
-}
-
-input:focus {
-  outline-width: 0;
-}
-
 button {
   font-size: 1rem;
   height: 40px;
@@ -71,27 +59,51 @@ ul {
   height: 90vh;
 }
 
+.hero-video {
+  position: absolute;
+  top:0;
+  z-index: -1;
+}
+
 .home-section .container {
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 10;
 }
 
 .home-section h1 {
-  font-family: 'Inter', sans-serif;
-  color: #33363F;
-  font-size: 2.8rem;
+  font-family: 'Nunito', sans-serif;
+  color: #ffffff;
+  font-size: 4rem;
   width: 60%;
   text-align: center;
+  line-height: 1;
+  margin-top:2rem;
+  text-shadow: 2px 2px 4px rgba(2, 2, 2, 0.173);
+}
+
+.home-section input {
+  border: none;
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  width: 500px;
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+input:focus {
+  outline-width: 0;
 }
 
 .about-section {
   height: 100vh;
-  background: #ffd0e5;
+  background: #ffffff;
 }
 
 .no-suggestions {
-  color: #999;
+  color: #ffffff;
   padding: 0.5rem;
 }
 
@@ -101,17 +113,18 @@ ul {
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
-  max-height: 143px;
+  max-height: 220px;
   overflow-y: auto;
   padding-left: 0;
   width: 500px;
   margin: 0 auto;
   text-align: left;
   color: #33363F;
+  background: #ffffff;
 }
 
 .suggestions li {
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1.2rem;
 }
 
@@ -197,6 +210,7 @@ ul {
         color: #33363F;
         flex-grow: 3;
         position: relative;
+        background: #EEE9E2;
       }
       .country-details-drawer {
         position: absolute;
@@ -214,9 +228,16 @@ ul {
       .country-details-drawer-info {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items:top;
         width: 100%;
         margin-top: 0.5rem;
+      }
+      .country-details-drawer-info h1{
+        line-height: 1.1;
+        font-size: 2rem;
+      }
+      .country-details-drawer-info >img {
+        margin-top: .25rem;
       }
       .country-details-drawer-info-item {
         margin: 0.25rem;
@@ -290,3 +311,8 @@ ul {
   align-items: center;
   margin-top: 45vmin
 }
+  .loading-text >div {
+    color: #999999;
+    padding: .25rem;
+    font-size: 1.25rem;
+  }

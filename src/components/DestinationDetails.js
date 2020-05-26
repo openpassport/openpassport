@@ -27,12 +27,14 @@ class CountryDetails extends React.Component {
                                     <img alt='flag' src={`https://openpassport.co/static/${item.destination.flag}`} height="24px" style={{ marginRight: "8px" }} />
                                     <h1>{item.destination.name}</h1>
                                 </div>
-                                <div className='country-details-drawer-subsection'>
-                                    <h5>ABOUT</h5>
-                                    <p>
-                                        Thailand is a Southeast Asian country. It's known for tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha.
-                                    </p>
-                                </div>
+                                {item.destination.description &&
+                                    <div className='country-details-drawer-subsection'>
+                                        <h5>ABOUT</h5>
+                                        <p>
+                                            {item.destination.description}
+                                        </p>
+                                    </div>
+                                }
                                 <div className="country-details-drawer-info">
                                     <div className="country-details-drawer-info-item">
                                         <div>

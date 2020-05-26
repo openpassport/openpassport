@@ -8,8 +8,8 @@ const headers = {
 }
 
 export function getPassportDetailsForCountry(home) {
-    console.log("12412414124", home)
-    return fetch(`https://api.openpassport.co/api/op/countries/${home}/destinations/`, headers)
+    var lowercase_home = home.toLowerCase()
+    return fetch(`https://api.openpassport.co/api/op/countries/${lowercase_home}/destinations/`, headers)
         .then(data => data.json())
         .then(response => {
             return response
@@ -20,7 +20,8 @@ export function getPassportDetailsForCountry(home) {
 }
 
 export function getSourceCountry(home) {
-    return fetch(`https://api.openpassport.co/api/op/countries/${home}/`, headers)
+    var lowercase_home = home.toLowerCase()
+    return fetch(`https://api.openpassport.co/api/op/countries/${lowercase_home}/`, headers)
         .then(data => data.json())
         .then(response => {
             return response
@@ -31,7 +32,9 @@ export function getSourceCountry(home) {
 }
 
 export function getDestinationBasic(homeId, destinationId) {
-    return fetch(`https://api.openpassport.co/api/op/countries/${homeId}/destinations/?country=${destinationId}`, headers)
+    var lowercase_home = homeId.toLowerCase()
+    var lowercase_destination = destinationId.toLowerCase()
+    return fetch(`https://api.openpassport.co/api/op/countries/${lowercase_home}/destinations/?country=${lowercase_destination}`, headers)
         .then(data => data.json())
         .then(response => {
             return response

@@ -36,7 +36,8 @@ class MapBox extends React.Component {
             map.flyTo({
                 center: [this.props.destinationDetails[0].destination.longitude, this.props.destinationDetails[0].destination.latitude],
                 zoom: 4,
-                essential: true
+                essential: true,
+                speed: 2,
             })
         }
     }

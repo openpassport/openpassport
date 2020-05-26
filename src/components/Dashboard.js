@@ -71,9 +71,9 @@ class Dashboard extends React.Component {
         else {
             return (
                 <div className='dashboard-loading'>
-                    <div>
+                    <div className="loading-text">
                         <img alt="loading indicator" src={require('../assets/images/load.svg')} width="60px" height="60px" />
-                    Loading
+                        <div>Loading</div>
                     </div>
                 </div>
             )
