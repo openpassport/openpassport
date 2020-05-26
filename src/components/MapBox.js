@@ -40,6 +40,17 @@ class MapBox extends React.Component {
                 speed: 2,
             })
         }
+
+        map.addLayer({
+            'id': 'point',
+            'source': 'point',
+            'type': 'circle',
+            'paint': {
+                'circle-radius': 10,
+                'circle-color': '#007cbf'
+            }
+        })
+
     }
 
     render() {
