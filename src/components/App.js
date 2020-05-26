@@ -41,19 +41,117 @@ class App extends React.Component {
                   ? <div>Loading</div>
                   : <CountryChooser />}
               </div>
-              <video autoPlay muted loop className="hero-video" style={{ maxWidth: '100vw' }}>
+              <video autoPlay muted loop className="hero-video">
                 <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
                   Your browser does not support HTML5 video.
               </video>
             </div>
-            <div className="about-section">
+            <div className="home-passport-section">
+              <div className="container">
+                <div>
+                  <h2 className="home-section-title-black">Passport Power Rank</h2>
+                  <p className="home-section-titledescription-black">The Passport Power Rank is a measure that tracks the ability of the holder of the passport to travel visa-free. </p>
+                </div>
+                <ul className="home-passport-section-countrylist">
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-1.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">United Arab Emirates</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +3
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-2.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Finland</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +3
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Luxembourg</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount red">
+                      -2
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-4.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Germany</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +3
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-6.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Denmark</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +1
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-7.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Netherlands</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount red">
+                      -2
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Austria</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +3
+                    </div>
+                  </li>
+
+                  <li className="home-passport-section-countrylist-item">
+                    <div>
+                      <span><img src={require('../assets/dummy-assets/flag-5.svg')} width="48" /></span>
+                      <span className="home-passport-section-country-name">Spain</span>
+                    </div>
+                    <div className="home-passport-section-countrylist-progresscount green">
+                      +3
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className='visa-openness-section'>
+              <div className='container'>
+                <div>
+                  <h3>Visa Openness when travelling to a country:</h3>
+                  <div className='visa-openness-country'>
+                    <div className='visa-openness-countryselect-button'>United States</div>
+                  </div>
+                </div>
+                <div><img src={require('../assets/dummy-assets/worldmap.png')} height='370' /></div>
+              </div>
             </div>
           </Route>
           <Route path='/undefined' component={NoMatch} />
           <Route path='/:homeSlug' component={Dashboard} />
           <Route component={NoMatch} />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter >
     )
   }
 }

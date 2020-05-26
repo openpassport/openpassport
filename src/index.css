@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 
 * {
   padding: 0;
@@ -21,6 +21,10 @@ body {
 a {
   text-decoration: none;
   color: #0a0a0a;
+}
+
+li {
+  list-style: none;
 }
 
 code {
@@ -49,18 +53,24 @@ ul {
 }
 
 .container {
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative;
 }
 
 .home-section {
-  padding: 10vmin 0 0 0;
-  height: 90vh;
+  padding: 2vmin 0 0 0;
+  height: 92vh;
+  overflow: hidden;
+  position: relative;
+  margin:1.5rem;
 }
+
 
 .hero-video {
   position: absolute;
+  width: 100%;
   top:0;
   z-index: -1;
 }
@@ -79,7 +89,7 @@ ul {
   width: 60%;
   text-align: center;
   line-height: 1;
-  margin-top:2rem;
+  margin-top:20vmin;
   text-shadow: 2px 2px 4px rgba(2, 2, 2, 0.173);
 }
 
@@ -105,6 +115,7 @@ input:focus {
 .no-suggestions {
   color: #ffffff;
   padding: 0.5rem;
+  text-align: center;
 }
 
 .suggestions {
@@ -203,6 +214,24 @@ input:focus {
         color: #33363F;
         font-size: .9rem;
       }
+      .dashboard-loading {
+        width: 100%;
+      }
+
+      .dashboard-loading > div{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        max-width: 800px;
+        align-items: center;
+        margin-top: 45vmin
+      }
+        .loading-text >div {
+          color: #999999;
+          padding: .25rem;
+          font-size: 1.25rem;
+        }
+
 
 /**Country details**/
  .country-details {
@@ -299,20 +328,100 @@ input:focus {
   bottom: 0;
 }
 
-.dashboard-loading {
-  width: 100%;
-}
+/** Passport power rank **/
 
-.dashboard-loading > div{
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 800px;
-  align-items: center;
-  margin-top: 45vmin
+.home-passport-section {
+  background:#ffffff;
+  padding: 5rem 0;
+  min-height: 100vh;
+  text-align: center;
 }
-  .loading-text >div {
-    color: #999999;
-    padding: .25rem;
-    font-size: 1.25rem;
+  .home-passport-section > .container > div {
+    width: 60%;
+    margin: 0 auto;
   }
+  .home-section-title-black {
+    font-family: 'Nunito', sans-serif;
+    font-size: 4rem;
+    color: #2E292A;
+    text-align: center;
+  }
+  .home-section-titledescription-black {
+    font-family: 'Inter', sans-serif;
+    color: #848484;
+    font-size: 1.5rem;
+  }
+  .home-passport-section-countrylist {
+    margin: 0 auto;
+    max-width: 720px;
+    width: 60%;
+    padding: 2rem 0 1rem 0;
+  }
+  .home-passport-section-countrylist-item {
+    padding: .5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: .5rem 0;
+  }
+  .home-passport-section-countrylist-item > div {
+    display: flex;
+    align-items: center;
+  }
+  .home-passport-section-countrylist-item > div img {
+    margin-right: 1rem;
+  }
+  .home-passport-section-country-name {
+    font-size: 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .home-passport-section-countrylist-progresscount {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: right;
+  }
+   .home-passport-section-countrylist-progresscount.green {
+    color: #04B25F;
+   }
+   .home-passport-section-countrylist-progresscount.red {
+     color: #E05050;
+   }
+
+   .visa-openness-section .container {
+    display: flex;
+   }
+
+   .visa-openness-section h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.7rem;
+      width: 80%;
+      color: #2E292A;
+      line-height: 1.2;
+   }
+   .visa-openness-country {
+     padding: 2rem 0;
+   }
+   .visa-openness-countryselect-button {
+     width: 75%;
+     background: #F1F1F1;
+     font-size: 1.5rem;
+     padding: 1rem;
+   }
+
+   .visa-openness-countryselect-button:hover {
+    background: #eaeaea;
+    cursor: pointer;
+   }
+
+   .visa-openness-section .container > div {
+     width: 50%;
+   }
+
+   @media only screen and (min-width:1400px) {
+     .container {
+       width: 1370px;
+     }
+   } 
+
+
