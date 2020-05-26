@@ -19,6 +19,10 @@ class AutoComplete extends Component {
         this.handleKeyDown = this.handleKeyDown.bind(this)
     }
 
+    componentDidMount() {
+        this.sourceInput.focus()
+    }
+
     onChange = e => {
         const { suggestions } = this.props
         var countries = Object.values(suggestions)
@@ -140,6 +144,7 @@ class AutoComplete extends Component {
         return (
             <Fragment>
                 <input
+                    ref={(input) => { this.sourceInput = input }}
                     type="text"
                     onChange={onChange}
                     onKeyDown={(e) => this.handleKeyDown(e)}

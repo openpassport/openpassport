@@ -41,7 +41,7 @@ class App extends React.Component {
                   ? <div>Loading</div>
                   : <CountryChooser />}
               </div>
-              <video autoPlay muted loop className="hero-video">
+              <video autoPlay muted loop className="hero-video" style={{ maxWidth: '100vw' }}>
                 <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
                   Your browser does not support HTML5 video.
               </video>
