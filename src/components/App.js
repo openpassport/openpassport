@@ -31,20 +31,22 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/'>
             <div className="home-section">
-              <div className="container">
-                {/* <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" /> */}
-                <div className="dashboard-sidepanel-logo">
-                  <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} width='300px' />
+              <div>
+                <div className="container">
+                  {/* <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" /> */}
+                  <div className="home-logo">
+                    <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} width='300px' />
+                  </div>
+                  <h1>Explore where your passport can take you!</h1>
+                  {this.props.loading === true
+                    ? <div>Loading</div>
+                    : <CountryChooser />}
                 </div>
-                <h1>Explore where your passport can take you!</h1>
-                {this.props.loading === true
-                  ? <div>Loading</div>
-                  : <CountryChooser />}
-              </div>
-              <video autoPlay muted loop className="hero-video">
-                <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
+                <video autoPlay muted loop className="hero-video">
+                  <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
                   Your browser does not support HTML5 video.
-              </video>
+                </video>
+              </div>
             </div>
             <div className="home-passport-section">
               <div className="container">
@@ -163,7 +165,9 @@ class App extends React.Component {
               </div>
             </div>
             <div className='static-footer'>
-
+              <img src={require('../assets/images/logo+mark.svg')} height='100px' />
+              <div className='static-message-footer'>
+              </div>
             </div>
           </Route>
           <Route path='/undefined' component={NoMatch} />

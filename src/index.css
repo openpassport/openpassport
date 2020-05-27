@@ -16,6 +16,7 @@ global styles
 body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
+  background: #0D901D;;
 }
 
 a {
@@ -60,11 +61,15 @@ ul {
 }
 
 .home-section {
-  padding: 2vmin 0 0 0;
   height: 92vh;
   overflow: hidden;
+  background: #ffffff;
+}
+
+.home-section div {
+  padding:0;
+  margin: 1.5rem;
   position: relative;
-  margin:1.5rem;
 }
 
 
@@ -72,10 +77,11 @@ ul {
   position: absolute;
   width: 100%;
   top:0;
-  z-index: -1;
+  z-index: 0;
 }
 
-.home-section .container {
+.home-section div .container {
+  margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -458,7 +464,15 @@ input:focus {
      width: 50%;
    }
 
-   .static-footer{
+  .static-footer {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0 0 0;
+    background: #ffffff;
+  }
+
+   .static-message-footer{
+      margin-top: 2rem;
       background: #0D901D;
       min-height: 300px;
    }

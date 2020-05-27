@@ -150,6 +150,7 @@ class AutoComplete extends Component {
                     onKeyDown={(e) => this.handleKeyDown(e)}
                     value={userInput}
                     placeholder="Select your home country"
+                    className='country-chooser-input'
                 />
                 {suggestionsListComponent}
             </Fragment>
