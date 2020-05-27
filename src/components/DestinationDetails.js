@@ -57,8 +57,8 @@ class CountryDetails extends React.Component {
                                 </div>
                                 <div className='country-details-drawer-subsection'>
                                     <h5>VISA REQUIREMENTS</h5>
-                                    {item.requirement.map((listitem) => (
-                                        <li>{listitem}</li>
+                                    {item.requirement.map((listitem, i) => (
+                                        <li key={i}>{listitem}</li>
                                     ))}
                                     <ul>
                                         <li>Visa application form</li>
