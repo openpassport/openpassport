@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@700&display=swap');
 
 * {
   padding: 0;
@@ -83,7 +83,7 @@ ul {
 }
 
 .home-section h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Livvic', sans-serif;
   color: #ffffff;
   font-size: 4rem;
   width: 60%;
@@ -95,11 +95,11 @@ ul {
 
 .home-section input {
   border: none;
-  border-radius: 2px;
+  border-radius: .5rem;
   font-family: 'Inter', sans-serif;
-  width: 500px;
+  width: 550px;
   font-size: 1.3rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -123,15 +123,16 @@ input:focus {
   border: 1px solid rgb(233, 233, 233);
   border-top-width: 0;
   list-style: none;
-  margin-top: 0;
   max-height: 220px;
   overflow-y: auto;
   padding-left: 0;
-  width: 500px;
+  width: 550px;
   margin: 0 auto;
+  margin-top: .25rem;
   text-align: left;
   color: #33363F;
   background: #ffffff;
+  border-radius: .5rem;
 }
 
 .suggestions li {
@@ -143,7 +144,7 @@ input:focus {
 .suggestions li:hover {
   background-color: #F3F6F9;
   cursor: pointer;
-  color: #D93E69;
+  color: #00A013;
 }
 
 .suggestions li:not(:last-of-type) {
@@ -200,7 +201,7 @@ input:focus {
         background: #F3F6F9;
       }
       .dashboard-sidepanel-country-list-item:hover h3{
-        color: #D93E69;
+        color: #00A013;
       }
       .dashboard-sidepanel-country-list-item h3 {
         color: #33363F;
@@ -341,7 +342,7 @@ input:focus {
     margin: 0 auto;
   }
   .home-section-title-black {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Livvic', sans-serif;
     font-size: 4rem;
     color: #2E292A;
     text-align: center;
@@ -388,20 +389,59 @@ input:focus {
      color: #E05050;
    }
 
+   .visa-openness-section {
+    padding: 3rem 0 5rem 0;
+    background: #ffffff;
+
+   }
+
    .visa-openness-section .container {
     display: flex;
    }
 
    .visa-openness-section h3 {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Livvic', sans-serif;
       font-size: 2.7rem;
       width: 80%;
       color: #2E292A;
       line-height: 1.2;
    }
+
    .visa-openness-country {
      padding: 2rem 0;
    }
+
+   .visa-openness-score-group {
+     margin-top: 1rem;
+   }
+   .visa-openness-country-stats {
+     margin-top: 1rem;
+   }
+
+   .visa-openness-country-stats ul li {
+     padding: 1rem 0;
+     border-bottom: 1px solid #f1f1f1;
+     font-size: 1.2rem;
+     font-weight: 600;
+   }
+
+   .visa-openness-country h5 {
+     font-size: 1.5rem;
+     font-weight: 500;
+     color: #848484;
+   }
+
+   .visa-openness-score-large {
+      font-family: 'Livvic', sans-serif;
+     font-size:7rem;
+   }
+
+   .visa-openness-score-outof {
+     font-size: 3rem;
+     color: #9C9C9C;
+     margin-left: 1rem;
+   }
+
    .visa-openness-countryselect-button {
      width: 75%;
      background: #F1F1F1;
@@ -416,6 +456,11 @@ input:focus {
 
    .visa-openness-section .container > div {
      width: 50%;
+   }
+
+   .static-footer{
+      background: #0D901D;
+      min-height: 300px;
    }
 
    @media only screen and (min-width:1400px) {
