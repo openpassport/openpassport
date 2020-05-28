@@ -53,3 +53,9 @@ export function handleResetSourceDes() {
         dispatch(resetDestination())
     }
 }
+
+export function handleResetDestination() {
+    return (dispatch) => {
+        dispatch(resetDestination())
+    }
+}

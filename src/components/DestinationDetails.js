@@ -1,9 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { handleDestinationBasicData } from '../actions/shared'
+import {
+    handleDestinationBasicData,
+    handleResetDestination
+} from '../actions/shared'
 import { Link } from 'react-router-dom'
 
 class CountryDetails extends React.Component {
+    clickToReset = () => {
+        this.props.dispatch(handleResetDestination())
+    }
     componentDidMount() {
         this.props.dispatch(handleDestinationBasicData(this.props.match.params.homeSlug, this.props.match.params.destinationSlug))
     }
@@ -18,7 +24,7 @@ class CountryDetails extends React.Component {
             return (
                 <div className="country-details">
                     <div className="country-details-drawer">
-                        <Link to={`/${this.props.match.params.homeSlug}`} className='details-close'>
+                        <Link to={`/${this.props.match.params.homeSlug}`} className='details-close' onClick={this.clickToReset}>
                             <img alt='close' src={require('../assets/images/close.svg')} width="16px" />
                         </Link>
                         {Object.values(destinationDetails).map((item) => (

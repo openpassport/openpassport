@@ -236,7 +236,11 @@ input:focus {
         font-size: .9rem;
       }
       .dashboard-loading {
+        position: absolute;
+        top:0;
         width: 100%;
+        min-height: 100vh;
+        background: #ffffff
       }
 
       .dashboard-loading > div{
@@ -347,6 +351,15 @@ input:focus {
   right: 0;
   left: 0;
   bottom: 0;
+}
+
+.map-loading {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 /** Passport power rank **/
