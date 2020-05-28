@@ -193,10 +193,24 @@ input:focus {
         font-size: 1.1rem;
         font-weight: 600;
       }
+
+      .dashboard-sidepanel-tab-group {
+        display: flex;
+        width: 100%;
+        margin-top: .75rem;
+      }
+      .dashboard-sidepanel-tab-group li {
+        flex-grow: 1;
+        text-align: center;
+        padding: 1rem 0;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
       .dashboard-sidepanel-country-list {
         display: flex;
         flex-direction: column;
-        padding: 0.75rem 0;
+        padding: 0.25rem 0;
       }
       .dashboard-sidepanel-country-list-item {
         padding: 0.75rem 1rem;

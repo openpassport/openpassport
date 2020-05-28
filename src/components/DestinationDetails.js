@@ -57,12 +57,12 @@ class CountryDetails extends React.Component {
                                 </div>
                                 <div className='country-details-drawer-subsection'>
                                     <h5>VISA REQUIREMENTS</h5>
-                                    {item.requirement.map((listitem, i) => (
-                                        <li key={i}>{listitem}</li>
-                                    ))}
-                                    <ul>
+                                    {/* <ul>
+                                        {item.requirement.map((listitem, i) => (
+                                            <li key={i}>{listitem}</li>
+                                        ))}
                                         <li>Visa application form</li>
-                                    </ul>
+                                    </ul> */}
                                 </div>
 
                             </div>
@@ -81,7 +81,7 @@ class CountryDetails extends React.Component {
 
 function mapStateToProps({ sourceCountry, destinationDetails }) {
     return {
-        loading: sourceCountry === null,
+        loading: destinationDetails === null,
         destinationDetails
     }
 }

@@ -57,7 +57,7 @@ class App extends React.Component {
                 <ul className="home-passport-section-countrylist">
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-1.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-1.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">United Arab Emirates</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -67,7 +67,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-2.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-2.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Finland</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -77,7 +77,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Luxembourg</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount red">
@@ -87,7 +87,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-4.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-4.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Germany</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -97,7 +97,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-6.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-6.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Denmark</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -107,7 +107,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-7.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-7.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Netherlands</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount red">
@@ -117,7 +117,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Austria</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -127,7 +127,7 @@ class App extends React.Component {
 
                   <li className="home-passport-section-countrylist-item">
                     <div>
-                      <span><img src={require('../assets/dummy-assets/flag-5.svg')} width="48" /></span>
+                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-5.svg')} width="48" /></span>
                       <span className="home-passport-section-country-name">Spain</span>
                     </div>
                     <div className="home-passport-section-countrylist-progresscount green">
@@ -161,11 +161,11 @@ class App extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div><img src={require('../assets/dummy-assets/worldmap.png')} height='370' /></div>
+                <div><img alt="flag" src={require('../assets/dummy-assets/worldmap.png')} height='370' /></div>
               </div>
             </div>
             <div className='static-footer'>
-              <img src={require('../assets/images/logo+mark.svg')} height='100px' />
+              <img alt="logo+mark" src={require('../assets/images/logo+mark.svg')} height='100px' />
               <div className='static-message-footer'>
               </div>
             </div>
