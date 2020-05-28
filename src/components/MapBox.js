@@ -11,14 +11,7 @@ class MapBox extends React.Component {
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
-            zoom: 4
-        })
-        map.on('move', () => {
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-            })
+            zoom: 3
         })
         map.addControl(new mapboxgl.NavigationControl())
     }
@@ -35,9 +28,9 @@ class MapBox extends React.Component {
         else {
             map.flyTo({
                 center: [this.props.destinationDetails[0].destination.longitude, this.props.destinationDetails[0].destination.latitude],
-                zoom: 4,
+                zoom: 3,
                 essential: true,
-                speed: 2,
+                speed: 1.5,
             })
         }
     }
