@@ -107,14 +107,14 @@ class MapBox extends React.Component {
         })
         if ((this.props.destinationDetails[0] === null) || (Object.keys(this.props.destinationDetails).length === 0)) {
             if (prevProps.sourceCountry.id !== this.props.sourceCountry.id) {
-                map.flyTo({
+                this.map.flyTo({
                     center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
                     essential: true
                 })
             }
         }
         else {
-            map.flyTo({
+            this.map.flyTo({
                 center: [this.props.destinationDetails[0].destination.longitude, this.props.destinationDetails[0].destination.latitude],
                 zoom: 3,
                 essential: true,
