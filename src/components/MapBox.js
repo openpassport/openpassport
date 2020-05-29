@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
 
-let map = null
-
-var size = 200
 
 class MapBox extends React.Component {
     mapRef = React.createRef()
@@ -19,91 +16,54 @@ class MapBox extends React.Component {
                 center: [0, 42],
                 zoom: 1.3
             })
-            this.map.addControl(new mapboxgl.NavigationControl())
+
+            this.map.on('load', function () {
+                this.addControl(new mapboxgl.NavigationControl())
+                this.addSource('point', {
+                    type: "geojson",
+                    data: {
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    25,
+                                    39
+                                ]
+                            }
+                        }]
+                    }
+                })
+                this.addLayer({
+                    "id": "point",
+                    "source": "point",
+                    "type": "circle",
+                    "paint": {
+                        "circle-radius": 10,
+                        "circle-color": "#00A013"
+                    }
+                })
+            })
+
 
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log("longLat", this.props.lngLatFree)
-        var pulsingDot = {
-            width: size,
-            height: size,
-            data: new Uint8Array(size * size * 4),
-
-            onAdd: function () {
-                var canvas = document.createElement('canvas')
-                canvas.width = this.width
-                canvas.height = this.height
-                this.context = canvas.getContext('2d')
-            },
-
-            render: function () {
-                var duration = 2000;
-                var t = (performance.now() % duration) / duration;
-
-                var radius = (size / 3) * 0.2;
-                var context = this.context;
-
-                // draw inner circle
-                context.beginPath();
-                context.arc(
-                    this.width / 2,
-                    this.height / 2,
-                    radius,
-                    0,
-                    Math.PI * 2
-                );
-                context.fillStyle = 'rgba(0, 160, 19, 1)';
-                context.strokeStyle = 'white';
-                context.lineWidth = 0.2 + 4 * (1 - t);
-                context.fill();
-                context.stroke();
-                this.data = context.getImageData(
-                    0,
-                    0,
-                    this.width,
-                    this.height
-                ).data
-
-                return true
-            }
-        }
-
-        var featureCollection = []
-        // for every item object within longLat
-        for (var itemIndex in this.props.lngLatFree) {
-            console.log("hh")
-            featureCollection.push({
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": this.props.lngLatFree[itemIndex].coordinate
-                },
-                "properties": {
-                    //"title": longLat[itemIndex].text
-                }
-            })
-        }
+    componentDidUpdate(prevProps) {
+        //console.log("longLat", this.props.lngLatFree)
         this.map.on('load', function () {
-            this.addImage('free-dot', pulsingDot, { pixelRatio: 2 })
-            this.addLayer({
-                "id": "points",
-                "type": "symbol",
-                "source": {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": featureCollection
+            this.getSource('point').setData({
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [70, 40]
                     }
-                },
-                "layout": {
-                    "icon-image": "free-dot",
-                    "text-field": "{title}",
-                    "text-offset": [0, 0.6],
-                    "text-anchor": "top"
-                }
+                }]
             })
+
         })
         if ((this.props.destinationDetails[0] === null) || (Object.keys(this.props.destinationDetails).length === 0)) {
             if (prevProps.sourceCountry.id !== this.props.sourceCountry.id) {
@@ -125,6 +85,7 @@ class MapBox extends React.Component {
 
     render() {
         const { loading } = this.props
+
         if (!loading) {
             return (
                 <div>
@@ -134,7 +95,7 @@ class MapBox extends React.Component {
         }
         else {
             return (
-                <div className='map-loading'>
+                <div className='map-loading' >
                     Loading map
                 </div>
             )
