@@ -36,7 +36,7 @@ class MapBox extends React.Component {
                     }
                 })
                 this.addLayer({
-                    "id": "point",
+                    "id": "location",
                     "source": "point",
                     "type": "circle",
                     "paint": {
@@ -52,16 +52,32 @@ class MapBox extends React.Component {
 
     componentDidUpdate(prevProps) {
         //console.log("longLat", this.props.lngLatFree)
+        var featureCollection = []; // Initialize empty collection
+
+        // Your longLat collection
+        var longLat = [
+            [55, 60],
+            [30, -34],
+            [20, 15],
+            [0, 0]
+        ];
+
+        // for every item object within longLat
+        for (var itemIndex in this.props.lngLatFree) {
+            // push new feature to the collection
+            featureCollection.push({
+                "type": "geojson",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": this.props.lngLatFree[itemIndex].coordinate
+                }
+            });
+        }
+
         this.map.on('load', function () {
             this.getSource('point').setData({
                 "type": "FeatureCollection",
-                "features": [{
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [70, 40]
-                    }
-                }]
+                "features": featureCollection
             })
 
         })
