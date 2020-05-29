@@ -60,12 +60,12 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mounted", this.state.list)
+        console.log("mounted", this.props)
     }
 
     render() {
         const { showArrival, showRequired, showVisaFree } = this.state
-        const { loading, sourceCountry, requiredList, freeList, arrivalList } = this.props
+        const { loading, sourceCountry, requiredList, freeList, arrivalList, passportValidCountryList } = this.props
         const list = showVisaFree === true
             ? freeList
             : showRequired === true
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
-                        <MapBox />
+                        <MapBox countryList={passportValidCountryList} />
                     </div>
                 </div >
             )
@@ -178,7 +178,8 @@ function mapStateToProps({ sourceCountry, passportValidCountryList }) {
         arrivalList,
         freeList,
         requiredList,
-        sourceCountry
+        sourceCountry,
+        passportValidCountryList
     }
 
 }
