@@ -6,9 +6,16 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmd
 
 
 class MapBox extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            initialData: this.props.countryList
+        }
+    }
     mapRef = React.createRef()
     map
     componentDidMount() {
+        console.log("here", this.props.countryList)
         if (!this.props.loading) {
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
@@ -17,22 +24,32 @@ class MapBox extends React.Component {
                 zoom: 1.3
             })
 
+            var featureCollection = []
+            const lngLat = []
+            Object.values(this.props.countryList).map((item) => {
+                const obj = []
+                obj["coordinate"] = [item.longitude, item.latitude]
+                obj["slug"] = item.slug
+                obj["name"] = item.name
+                lngLat.push(obj)
+            })
+            for (var itemIndex in lngLat) {
+                featureCollection.push({
+                    "type": "geojson",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": lngLat[itemIndex].coordinate
+                    }
+                })
+            }
+
             this.map.on('load', function () {
                 this.addControl(new mapboxgl.NavigationControl())
                 this.addSource('point', {
                     type: "geojson",
                     data: {
                         "type": "FeatureCollection",
-                        "features": [{
-                            "type": "Feature",
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [
-                                    25,
-                                    39
-                                ]
-                            }
-                        }]
+                        "features": featureCollection
                     }
                 })
                 this.addLayer({
@@ -45,54 +62,49 @@ class MapBox extends React.Component {
                     }
                 })
             })
-
-
         }
     }
 
     componentDidUpdate(prevProps) {
-        //console.log("longLat", this.props.lngLatFree)
-        var featureCollection = []; // Initialize empty collection
-
-        // Your longLat collection
-        var longLat = [
-            [55, 60],
-            [30, -34],
-            [20, 15],
-            [0, 0]
-        ];
-
-        // for every item object within longLat
-        for (var itemIndex in this.props.lngLatFree) {
-            // push new feature to the collection
-            featureCollection.push({
-                "type": "geojson",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": this.props.lngLatFree[itemIndex].coordinate
-                }
-            });
+        if (Object.keys(this.props.countryList).length !== Object.keys(prevProps.countryList).length) {
+            var featureCollection = []
+            const lngLat = []
+            Object.values(this.props.countryList).map((item) => {
+                const obj = []
+                obj["coordinate"] = [item.longitude, item.latitude]
+                obj["slug"] = item.slug
+                obj["name"] = item.name
+                lngLat.push(obj)
+            })
+            for (var itemIndex in lngLat) {
+                featureCollection.push({
+                    "type": "geojson",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": lngLat[itemIndex].coordinate
+                    }
+                })
+            }
+            if (this.map.getSource('point') !== undefined) {
+                this.map.getSource('point').setData({
+                    "type": "FeatureCollection",
+                    "features": featureCollection
+                })
+            }
         }
 
-        this.map.on('load', function () {
-            this.getSource('point').setData({
-                "type": "FeatureCollection",
-                "features": featureCollection
-            })
-
-        })
         if ((this.props.destinationDetails[0] === null) || (Object.keys(this.props.destinationDetails).length === 0)) {
             if (prevProps.sourceCountry.id !== this.props.sourceCountry.id) {
                 this.map.flyTo({
                     center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
-                    essential: true
+                    essential: true,
                 })
             }
         }
         else {
             this.map.flyTo({
                 center: [this.props.destinationDetails[0].destination.longitude, this.props.destinationDetails[0].destination.latitude],
-                zoom: 3,
+                zoom: 4.5,
                 essential: true,
                 speed: 1.5,
             })
@@ -120,38 +132,10 @@ class MapBox extends React.Component {
     }
 }
 
-function mapStateToProps({ sourceCountry, passportValidCountryList, destinationDetails }) {
-    const lngLatFree = []
-    const lngLatArrival = []
-    const lngLatRequired = []
-    Object.values(passportValidCountryList).map((item) => {
-        const obj = []
-        switch (item.visa) {
-            case 'visa-not-required':
-                obj["coordinate"] = [item.destination.longitude, item.destination.latitude]
-                obj["slug"] = item.destination.slug
-                obj["name"] = item.destination.name
-                return lngLatFree.push(obj)
-            case 'visa-required':
-                obj["coordinate"] = [item.destination.longitude, item.destination.latitude]
-                obj["slug"] = item.destination.slug
-                obj["name"] = item.destination.name
-                return lngLatRequired.push(obj)
-            case 'visa-arrival':
-                obj["coordinate"] = [item.destination.longitude, item.destination.latitude]
-                obj["slug"] = item.destination.slug
-                obj["name"] = item.destination.name
-                return lngLatArrival.push(obj)
-            default:
-                return null
-        }
-    })
+function mapStateToProps({ sourceCountry, destinationDetails }) {
     return {
         loading: (sourceCountry === null) || (Object.values(sourceCountry).length === 0),
         sourceCountry,
-        lngLatFree,
-        lngLatArrival,
-        lngLatRequired,
         destinationDetails
     }
 }

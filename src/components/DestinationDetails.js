@@ -79,15 +79,25 @@ class CountryDetails extends React.Component {
         }
         else {
             return (
-                <div>Loading</div>
+                <div className="country-details">
+                    <div className="country-details-drawer">
+                        <div className='loading-container'>
+
+                            <img alt="loading indicator" src={require('../assets/images/load.svg')} width="60px" height="60px" />
+                        Loading
+
+                        </div>
+
+                    </div>
+                </div>
             )
         }
     }
 }
 
-function mapStateToProps({ sourceCountry, destinationDetails }) {
+function mapStateToProps({ destinationDetails }) {
     return {
-        loading: destinationDetails === null,
+        loading: (destinationDetails === null) || (Object.keys(destinationDetails).length === 0),
         destinationDetails
     }
 }
