@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
 
     render() {
         const { showArrival, showRequired, showVisaFree } = this.state
-        const { loading, sourceCountry, requiredList, freeList, arrivalList, passportValidCountryList } = this.props
+        const { loading, sourceCountry, requiredList, freeList, arrivalList } = this.props
         const list = showVisaFree === true
             ? freeList
             : showRequired === true
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
-                        <MapBox countryList={passportValidCountryList} />
+                        <MapBox countryList={list} />
                     </div>
                 </div >
             )
@@ -168,6 +168,7 @@ function mapStateToProps({ sourceCountry, passportValidCountryList }) {
                 return freeList
             case required:
                 requiredList.push(item.destination)
+                return requiredList
             default:
                 return null
         }

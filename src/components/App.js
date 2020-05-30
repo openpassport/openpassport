@@ -1,14 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { handleInitialData } from '../actions/shared'
-import CountryChooser from './CountryChooser'
+import HomeCountryChooser from './HomeCountryChooser'
 import Dashboard from './Dashboard'
+import HomePassportIndex from './HomePassportIndex'
+import HomeVisaOpenness from './HomeVisaOpenness'
+import HomeFooter from './HomeFooter'
+
 import {
   BrowserRouter,
   Route,
   Switch,
   Link
 } from 'react-router-dom'
+
+import {
+  CSSTransition,
+  TransitionGroup
+} from 'react-transition-group'
 
 
 const NoMatch = ({ location }) => console.log(location) || (
@@ -21,155 +28,23 @@ const NoMatch = ({ location }) => console.log(location) || (
   </div>
 )
 
+const Home = () => {
+  return (
+    <div>
+      <HomeCountryChooser />
+      <HomePassportIndex />
+      <HomeVisaOpenness />
+      <HomeFooter />
+    </div>
+  )
+}
+
 class App extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData())
-  }
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path='/'>
-            <div className="home-section">
-              <div>
-                <div className="container">
-                  {/* <img alt="around the world in a plane" src={require('../assets/images/homepage-graphics.jpg')} height="180px" /> */}
-                  <div className="home-logo">
-                    <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} width='300px' />
-                  </div>
-                  <h1>Explore where your passport can take you!</h1>
-                  {this.props.loading === true
-                    ? <div>Loading</div>
-                    : <CountryChooser />}
-                </div>
-                <video autoPlay muted loop className="hero-video">
-                  <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
-                  Your browser does not support HTML5 video.
-                </video>
-              </div>
-            </div>
-            <div className="home-passport-section">
-              <div className="container">
-                <div>
-                  <h2 className="home-section-title-black">The Open passport Index</h2>
-                  <p className="home-section-titledescription-black">The Open Passport Index is a measure that tracks the ability of the holder of the passport to travel visa-free. </p>
-                </div>
-                <ul className="home-passport-section-countrylist">
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-1.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">United Arab Emirates</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +3
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-2.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Finland</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +3
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Luxembourg</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount red">
-                      -2
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-4.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Germany</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +3
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-6.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Denmark</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +1
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-7.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Netherlands</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount red">
-                      -2
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-3.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Austria</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +3
-                    </div>
-                  </li>
-
-                  <li className="home-passport-section-countrylist-item">
-                    <div>
-                      <span><img alt="flag" src={require('../assets/dummy-assets/flag-5.svg')} width="48" /></span>
-                      <span className="home-passport-section-country-name">Spain</span>
-                    </div>
-                    <div className="home-passport-section-countrylist-progresscount green">
-                      +3
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className='visa-openness-section'>
-              <div className='container'>
-                <div>
-                  <h3>Visa Openness when travelling to a country:</h3>
-                  <div className='visa-openness-country'>
-                    <div className='visa-openness-countryselect-button'>United States</div>
-                    <div className='visa-openness-score-group'>
-                      <div>
-                        <span className='visa-openness-score-large'>2.1</span>
-                        <span className='visa-openness-score-outof'>/10</span>
-                      </div>
-                      <h5>
-                        Visa openness score
-                      </h5>
-                    </div>
-                    <div className='visa-openness-country-stats'>
-                      <ul>
-                        <li>No Visa (157)</li>
-                        <li>Visa on arrival (321)</li>
-                        <li>Visa required (124)</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div><img alt="flag" src={require('../assets/dummy-assets/worldmap.png')} height='370' /></div>
-              </div>
-            </div>
-            <div className='static-footer'>
-              <img alt="logo+mark" src={require('../assets/images/logo+mark.svg')} height='100px' />
-              <div className='static-message-footer'>
-              </div>
-            </div>
-          </Route>
+          <Route exact path='/' component={Home} />
           <Route path='/undefined' component={NoMatch} />
           <Route path='/:homeSlug' component={Dashboard} />
           <Route component={NoMatch} />
@@ -179,10 +54,5 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    loading: authedUser === null,
-  }
-}
 
-export default connect(mapStateToProps)(App);
+export default App
