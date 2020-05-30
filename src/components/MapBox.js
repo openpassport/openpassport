@@ -20,7 +20,7 @@ class MapBox extends React.Component {
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [12, 42],
-                zoom: 1.3,
+                zoom: 1.5,
                 maxBounds: [[-180, -85], [180, 85]]
             })
 
@@ -31,18 +31,23 @@ class MapBox extends React.Component {
                 obj["coordinate"] = [item.longitude, item.latitude]
                 obj["slug"] = item.slug
                 obj["name"] = item.name
+                obj["visatype"] = item.visatype
                 return lngLat.push(obj)
             })
+
+            console.log("asfaf", lngLat)
             for (var itemIndex in lngLat) {
                 featureCollection.push({
                     "type": "geojson",
+                    "properties": {
+                        'visatype': lngLat[itemIndex].visatype
+                    },
                     "geometry": {
                         "type": "Point",
                         "coordinates": lngLat[itemIndex].coordinate
                     }
                 })
             }
-
             this.map.on('load', function () {
                 this.addControl(new mapboxgl.NavigationControl())
                 this.addSource('point', {
@@ -57,8 +62,25 @@ class MapBox extends React.Component {
                     "source": "point",
                     "type": "circle",
                     "paint": {
-                        "circle-radius": 10,
-                        "circle-color": "#00A013"
+                        "circle-radius": {
+                            'base': 8,
+                            'stops': [
+                                [1.5, 10],
+                                [2, 10]
+                            ]
+                        },
+                        "circle-color": [
+                            'match',
+                            ['get', 'visatype'],
+                            'visa-not-required',
+                            '#00A013',
+                            'visa-arrival',
+                            '#D78100',
+                            'visa-required',
+                            '#D93E69',
+                            '#00A013'
+                        ],
+                        'circle-opacity': 0.6
                     }
                 })
             })
@@ -66,6 +88,8 @@ class MapBox extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+
+        console.log("asfaffaf12409090914", this.props.countryList)
         if (Object.keys(this.props.countryList).length !== Object.keys(prevProps.countryList).length) {
             var featureCollection = []
             const lngLat = []
@@ -74,11 +98,15 @@ class MapBox extends React.Component {
                 obj["coordinate"] = [item.longitude, item.latitude]
                 obj["slug"] = item.slug
                 obj["name"] = item.name
+                obj["visatype"] = item.visatype
                 return lngLat.push(obj)
             })
             for (var itemIndex in lngLat) {
                 featureCollection.push({
                     "type": "geojson",
+                    "properties": {
+                        'visatype': lngLat[itemIndex].visatype
+                    },
                     "geometry": {
                         "type": "Point",
                         "coordinates": lngLat[itemIndex].coordinate
@@ -87,7 +115,6 @@ class MapBox extends React.Component {
             }
 
             this.map.on('load', function (e) {
-                console.log("hi from load")
                 if (this.getSource('point') !== undefined) {
                     this.getSource('point').setData({
                         "type": "FeatureCollection",
@@ -97,7 +124,6 @@ class MapBox extends React.Component {
             })
             //for all cases
             if (this.map.getSource('point') !== undefined) {
-                console.log("hi point")
                 this.map.getSource('point').setData({
                     "type": "FeatureCollection",
                     "features": featureCollection
@@ -107,7 +133,6 @@ class MapBox extends React.Component {
 
         /*Logic for map */
         if ((this.props.destinationDetails[0] === null) || (Object.keys(this.props.destinationDetails).length === 0)) {
-            console.log("hiii$909")
             this.map.flyTo({
                 center: [12, 42],
                 essential: true,
