@@ -17,11 +17,17 @@ const required = "visa-required"
 const arrival = "visa-arrival"
 
 class Dashboard extends React.Component {
-    state = {
-        showVisaFree: true,
-        showArrival: false,
-        showRequired: false,
-        list: []
+    constructor(props) {
+        super(props)
+        this.state = {
+            showVisaFree: true,
+            showArrival: false,
+            showRequired: false,
+            list: []
+        }
+        this.props.dispatch(handleSourceCountryData(this.props.match.params.homeSlug))
+        this.props.dispatch(handleSourceCountry(this.props.match.params.homeSlug))
+
     }
 
     showArrival = () => {
@@ -48,19 +54,8 @@ class Dashboard extends React.Component {
         }))
     }
 
-    constructor(props) {
-        super(props)
-        this.clickToReset = this.clickToReset.bind(this)
-        this.props.dispatch(handleSourceCountryData(this.props.match.params.homeSlug))
-        this.props.dispatch(handleSourceCountry(this.props.match.params.homeSlug))
-    }
-
     clickToReset = () => {
         this.props.dispatch(handleResetSourceDes())
-    }
-
-    componentDidMount() {
-        console.log("mounted", this.props)
     }
 
     render() {
@@ -72,51 +67,60 @@ class Dashboard extends React.Component {
                 ? requiredList
                 : arrivalList
 
+        //if (sourceCountry.slug !== this.props.match.params.homeSlug.toLowerCase()) {
+        //console.log("hi")
+        //     console.log("442314124", this.props.match.params.homeSlug, this.props.sourceCountry.slug)
+        //     if ((Object.keys(this.props.sourceCountry).length !== 0) && (this.props.match.params.homeSlug.toLowerCase() !== this.props.sourceCountry.slug)) {
+        //         return <Redirect to='/undefined' />
+        //     }
+        //}
+
         if (!loading) {
             return (
                 <div className='dashboard-container'>
                     <div className='dashboard-sidebar'>
                         <div className="dashboard-sidepanel-header">
-                            <div className="dashboard-sidepanel-logo">
-                                <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                            <div className='logo-container'>
+                                <div className="dashboard-sidepanel-logo">
+                                    <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                                </div>
+                                {sourceCountry &&
+                                    <Link
+                                        className="dashboard-sidepanel-country-select-button"
+                                        onClick={() => this.clickToReset()}
+                                        to='/'>
+                                        <span className="form-label">Your home country</span>
+                                        <span className="form-title">{sourceCountry.name}</span>
+                                    </Link>
+                                }
                             </div>
-                            {sourceCountry &&
-                                <Link
-                                    className="dashboard-sidepanel-country-select-button"
-                                    onClick={() => this.clickToReset()}
-                                    to='/'>
-                                    <span className="form-label">Your home country</span>
-                                    <span className="form-title">{sourceCountry.name}</span>
-                                </Link>
-                            }
-                        </div>
-                        <div className='dashboard-sidepanel-tab-group'>
-                            <li
-                                style={{
-                                    background: showVisaFree === true ? '#00A013' : 'rgb(0, 160, 19, 0.1)',
-                                    color: showVisaFree === true ? 'white' : '#001B03'
-                                }}
-                                onClick={this.showVisaFree}>
-                                Visa free
+                            <div className='dashboard-sidepanel-tab-group'>
+                                <li
+                                    style={{
+                                        background: showVisaFree === true ? '#00A013' : 'rgb(0, 160, 19, 0.1)',
+                                        color: showVisaFree === true ? 'white' : '#001B03'
+                                    }}
+                                    onClick={this.showVisaFree}>
+                                    Visa free
                                     </li>
-                            <li
-                                style={{
-                                    background: showArrival === true ? '#DEAF09' : 'rgb(0, 160, 19, 0.1)',
-                                    color: showArrival === true ? 'white' : '#001B03'
-                                }}
-                                onClick={this.showArrival}>
-                                Visa on arrival
+                                <li
+                                    style={{
+                                        background: showArrival === true ? '#DEAF09' : 'rgb(0, 160, 19, 0.1)',
+                                        color: showArrival === true ? 'white' : '#001B03'
+                                    }}
+                                    onClick={this.showArrival}>
+                                    Visa on arrival
                                 </li>
-                            <li
-                                style={{
-                                    background: showRequired === true ? '#D93E69' : 'rgb(0, 160, 19, 0.1)',
-                                    color: showRequired === true ? 'white' : '#001B03'
-                                }}
-                                onClick={this.showRequired}>
-                                Visa required
+                                <li
+                                    style={{
+                                        background: showRequired === true ? '#D93E69' : 'rgb(0, 160, 19, 0.1)',
+                                        color: showRequired === true ? 'white' : '#001B03'
+                                    }}
+                                    onClick={this.showRequired}>
+                                    Visa required
                                 </li>
+                            </div>
                         </div>
-
                         <div className="dashboard-sidepanel-country-list">
                             {list.map((item, i) => (
                                 <Link className="dashboard-sidepanel-country-list-item"
@@ -131,10 +135,13 @@ class Dashboard extends React.Component {
                             }
                         </div>
                     </div>
+
                     <div className="country-details">
                         <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
+
                         <MapBox countryList={list} />
                     </div>
+
                 </div >
             )
         }

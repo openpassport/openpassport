@@ -16,7 +16,6 @@ global styles
 body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
-  background: #0D901D;;
 }
 
 a {
@@ -164,16 +163,24 @@ input:focus {
 .dashboard-sidebar {
   max-width: 400px;
   height: 100vh;
-  background: rgb(255, 255, 255);
+  background: #ffffff;;
   flex-grow: 1;
-  overflow-y: scroll;
 }
 
 .dashboard-sidepanel-header {
-        padding: 0.5rem 1rem;
+        position: relative;;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 25vh;
+        justify-content: space-between;
+      }
+      .logo-container {
+        padding: 1rem;
       }
       .dashboard-sidepanel-logo {
-        padding: 1rem 0 2rem 0;
+        padding: 0 0 2rem 0;
       }
       .dashboard-sidepanel-country-select-button {
         font-family: 'Inter', sans-serif;
@@ -197,8 +204,11 @@ input:focus {
       .dashboard-sidepanel-tab-group {
         display: flex;
         width: 100%;
-        margin-top: .75rem;
+        position: relative;
+        top:0;
+        height: 50px;
       }
+     
       .dashboard-sidepanel-tab-group li {
         flex-grow: 1;
         text-align: center;
@@ -210,13 +220,17 @@ input:focus {
       .dashboard-sidepanel-country-list {
         display: flex;
         flex-direction: column;
-        padding: 0.25rem 0;
+        padding: 0;
+        position: relative;
+        height: 75vh;
+        overflow-y: scroll;
       }
       .dashboard-sidepanel-country-list-item {
         padding: 0.75rem 1rem;
         margin-top: 0.5rem;
         cursor: pointer;
       }
+
       .dashboard-sidepanel-country-list-item:hover{
         background: #F3F6F9;
       }
@@ -518,4 +532,18 @@ input:focus {
      margin-top: 35vmin
    }
 
+
+   .fade-enter {
+     opacity: 0;
+     z-index: 1;
+   }
+
+   .fade-enter.fade-enter-active {
+     opacity: 1;
+     transition: opacity 500ms ease-in;
+   }
+
+   .fade-exit {
+     display: none;
+   }
 
