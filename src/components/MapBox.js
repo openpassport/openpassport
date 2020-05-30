@@ -15,23 +15,23 @@ class MapBox extends React.Component {
     mapRef = React.createRef()
     map
     componentDidMount() {
-        console.log("here", this.props.countryList)
         if (!this.props.loading) {
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
-                center: [0, 42],
-                zoom: 1.3
+                center: [12, 42],
+                zoom: 1.3,
+                maxBounds: [[-180, -85], [180, 85]]
             })
 
             var featureCollection = []
             const lngLat = []
-            Object.values(this.props.countryList).map((item) => {
+            Object.values(this.state.initialData).map((item) => {
                 const obj = []
                 obj["coordinate"] = [item.longitude, item.latitude]
                 obj["slug"] = item.slug
                 obj["name"] = item.name
-                lngLat.push(obj)
+                return lngLat.push(obj)
             })
             for (var itemIndex in lngLat) {
                 featureCollection.push({
@@ -74,7 +74,7 @@ class MapBox extends React.Component {
                 obj["coordinate"] = [item.longitude, item.latitude]
                 obj["slug"] = item.slug
                 obj["name"] = item.name
-                lngLat.push(obj)
+                return lngLat.push(obj)
             })
             for (var itemIndex in lngLat) {
                 featureCollection.push({
@@ -85,7 +85,19 @@ class MapBox extends React.Component {
                     }
                 })
             }
+
+            this.map.on('load', function (e) {
+                console.log("hi from load")
+                if (this.getSource('point') !== undefined) {
+                    this.getSource('point').setData({
+                        "type": "FeatureCollection",
+                        "features": featureCollection
+                    })
+                }
+            })
+            //for all cases
             if (this.map.getSource('point') !== undefined) {
+                console.log("hi point")
                 this.map.getSource('point').setData({
                     "type": "FeatureCollection",
                     "features": featureCollection
@@ -93,13 +105,14 @@ class MapBox extends React.Component {
             }
         }
 
+        /*Logic for map */
         if ((this.props.destinationDetails[0] === null) || (Object.keys(this.props.destinationDetails).length === 0)) {
-            if (prevProps.sourceCountry.id !== this.props.sourceCountry.id) {
-                this.map.flyTo({
-                    center: [this.props.sourceCountry.longitude, this.props.sourceCountry.latitude],
-                    essential: true,
-                })
-            }
+            console.log("hiii$909")
+            this.map.flyTo({
+                center: [12, 42],
+                essential: true,
+                zoom: 1.5
+            })
         }
         else {
             this.map.flyTo({
@@ -132,10 +145,9 @@ class MapBox extends React.Component {
     }
 }
 
-function mapStateToProps({ sourceCountry, destinationDetails }) {
+function mapStateToProps({ destinationDetails }) {
     return {
-        loading: (sourceCountry === null) || (Object.values(sourceCountry).length === 0),
-        sourceCountry,
+        loading: destinationDetails === null,
         destinationDetails
     }
 }
