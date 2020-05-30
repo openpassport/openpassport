@@ -168,12 +168,15 @@ function mapStateToProps({ sourceCountry, passportValidCountryList }) {
     tmp.map((item) => {
         switch (item.visa) {
             case arrival:
+                item.destination['visatype'] = 'visa-arrival'
                 arrivalList.push(item.destination)
                 return arrivalList
             case free:
+                item.destination['visatype'] = 'visa-not-required'
                 freeList.push(item.destination)
                 return freeList
             case required:
+                item.destination['visatype'] = 'visa-required'
                 requiredList.push(item.destination)
                 return requiredList
             default:
