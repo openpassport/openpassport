@@ -81,7 +81,7 @@ class MapBox extends React.Component {
                             '#00A013'
                         ],
                         'circle-opacity': 0.6
-                    }
+                    },
                 })
             })
         }

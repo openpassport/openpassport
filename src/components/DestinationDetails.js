@@ -34,8 +34,8 @@ class CountryDetails extends React.Component {
                                 <h1>{item.destination.name}</h1>
                             </div>
                             <div>
-                                <a target="_blank" href={item.destination["link"].visa}>Visa</a>
-                                <a target="_blank" href={item.destination["link"].tourism}>Tourism</a>
+                                <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].visa}>Visa</a>
+                                <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].tourism}>Tourism</a>
                             </div>
                             {item.destination.description &&
                                 <div className='country-details-drawer-subsection'>

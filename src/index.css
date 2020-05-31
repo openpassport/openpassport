@@ -53,45 +53,39 @@ ul {
 }
 
 .container {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
   position: relative;
 }
 
 .home-section {
-  height: 92vh;
+  height: 96vh;
   overflow: hidden;
-  background: #ffffff;
+  padding: 1.5rem;
 }
-
-.home-section div {
-  padding:0;
-  margin: 1.5rem;
-  position: relative;
-}
-
 
 .hero-video {
   position: absolute;
-  width: 100%;
   top:0;
-  z-index: 0;
+  left:0;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+  
 }
 
-.home-section div .container {
+.home-section .container {
   margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
-  z-index: 10;
 }
 
 .home-section h1 {
   font-family: 'Livvic', sans-serif;
   color: #ffffff;
   font-size: 4rem;
-  width: 60%;
+  width: 70%;
   text-align: center;
   line-height: 1;
   margin-top:20vmin;
@@ -168,108 +162,108 @@ input:focus {
 }
 
 .dashboard-sidepanel-header {
-        position: relative;;
-        background: #ffffff;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        min-height: 25vh;
-        justify-content: space-between;
-      }
-      .logo-container {
-        padding: 1rem;
-      }
-      .dashboard-sidepanel-logo {
-        padding: 0 0 2rem 0;
-      }
-      .dashboard-sidepanel-country-select-button {
-        font-family: 'Inter', sans-serif;
-        display: flex;
-        flex-direction: column;
-        background: #ffffff;
-        padding: 0.5rem 1rem;
-        border: 1px solid #F3F6F9;
-      }
-      .dashboard-sidepanel-country-select-button:hover {
-        background: #F3F6F9;
-      }
-      .dashboard-sidepanel-country-select-button .form-label {
-        font-size: 1rem;
-      }
-      .dashboard-sidepanel-country-select-button .form-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-      }
+    position: relative;;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 25vh;
+    justify-content: space-between;
+  }
+  .logo-container {
+    padding: 1rem;
+  }
+  .dashboard-sidepanel-logo {
+    padding: 0 0 2rem 0;
+  }
+  .dashboard-sidepanel-country-select-button {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #F3F6F9;
+  }
+  .dashboard-sidepanel-country-select-button:hover {
+    background: #F3F6F9;
+  }
+  .dashboard-sidepanel-country-select-button .form-label {
+    font-size: 1rem;
+  }
+  .dashboard-sidepanel-country-select-button .form-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
 
-      .dashboard-sidepanel-tab-group {
-        display: flex;
-        width: 100%;
-        position: relative;
-        top:0;
-        height: 50px;
-      }
-     
-      .dashboard-sidepanel-tab-group li {
-        flex-grow: 1;
-        text-align: center;
-        padding: 1rem 0;
-        cursor: pointer;
-        font-weight: 500;
-      }
+  .dashboard-sidepanel-tab-group {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top:0;
+    height: 50px;
+  }
+  
+  .dashboard-sidepanel-tab-group li {
+    flex-grow: 1;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
 
-      .dashboard-sidepanel-country-list {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        position: relative;
-        height: 75vh;
-        overflow-y: scroll;
-      }
-      .dashboard-sidepanel-country-list-item {
-        padding: 0.75rem 1rem;
-        margin-top: 0.5rem;
-        cursor: pointer;
-      }
+  .dashboard-sidepanel-country-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  .dashboard-sidepanel-country-list-item {
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
 
-      .dashboard-sidepanel-country-list-item:hover{
-        background: #F3F6F9;
-      }
-      .dashboard-sidepanel-country-list-item:hover h3{
-        color: #00A013;
-      }
-      .dashboard-sidepanel-country-list-item h3 {
-        color: #33363F;
-        font-family: 'Inter', sans-serif;
-        font-size: 1.1rem;
-      }
-      .dashboard-sidepanel-country-list-item p {
-        margin-top: .1rem;
-        font-family: 'Inter', sans-serif;
-        opacity: .7;
-        color: #33363F;
-        font-size: .9rem;
-      }
-      .dashboard-loading {
-        position: absolute;
-        top:0;
-        width: 100%;
-        min-height: 100vh;
-        background: #ffffff
-      }
+  .dashboard-sidepanel-country-list-item:hover{
+    background: #F3F6F9;
+  }
+  .dashboard-sidepanel-country-list-item:hover h3{
+    color: #00A013;
+  }
+  .dashboard-sidepanel-country-list-item h3 {
+    color: #33363F;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+  }
+  .dashboard-sidepanel-country-list-item p {
+    margin-top: .1rem;
+    font-family: 'Inter', sans-serif;
+    opacity: .7;
+    color: #33363F;
+    font-size: .9rem;
+  }
+  .dashboard-loading {
+    position: absolute;
+    top:0;
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff
+  }
 
-      .dashboard-loading > div{
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        max-width: 800px;
-        align-items: center;
-        margin-top: 45vmin
-      }
-        .loading-text >div {
-          color: #999999;
-          padding: .25rem;
-          font-size: 1.25rem;
-        }
+  .dashboard-loading > div{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 800px;
+    align-items: center;
+    margin-top: 45vmin
+  }
+    .loading-text >div {
+      color: #999999;
+      padding: .25rem;
+      font-size: 1.25rem;
+    }
 
 
 /**Country details**/
@@ -418,6 +412,16 @@ input:focus {
   }
   .home-passport-section-countrylist-item > div img {
     margin-right: 1rem;
+    width: 44px;
+  }
+
+  .home-section .home-logo >img{
+    margin-top:2rem;
+    width: 300px;
+  }
+
+  .home-passport-section {
+    padding: 5rem 1rem;
   }
   .home-passport-section-country-name {
     font-size: 1.25rem;
@@ -439,11 +443,11 @@ input:focus {
    .visa-openness-section {
     padding: 3rem 0 5rem 0;
     background: #ffffff;
-
    }
 
    .visa-openness-section .container {
     display: flex;
+    flex-direction: row;
    }
 
    .visa-openness-section h3 {
@@ -478,9 +482,14 @@ input:focus {
      color: #848484;
    }
 
+   .openness-dummy-image {
+     height: 370px;
+   }
+
    .visa-openness-score-large {
-      font-family: 'Livvic', sans-serif;
-     font-size:7rem;
+    font-family: 'Livvic', sans-serif;
+    font-size:7rem;
+    line-height: 100%;
    }
 
    .visa-openness-score-outof {
@@ -547,3 +556,165 @@ input:focus {
      display: none;
    }
 
+
+@media only screen and (min-device-width : 375px)and (max-device-width : 667px)  {
+  
+  .home-section .container {
+    width: 100%;
+  }
+
+  .home-section {
+    width: 100%;
+    position: relative;
+    padding: 1rem;
+  }
+
+  .home-section h1 {
+    font-size: 2.8rem;
+    width: 110%;
+    margin-top: 30vmin;
+  }
+
+  .home-section input {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .home-section .home-logo >img{
+    width: 200px;
+    margin-top: .5rem;
+  }
+
+  .home-passport-section > .container > div {
+    width: 100%;
+  }
+
+  .home-section-title-black {
+    font-size: 2.2rem;
+    line-height: 100%;
+    margin-bottom: .5rem;
+  }
+  .no-suggestions {
+    color: #ffffff;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .suggestions {
+    width: 100%;
+  }
+
+  .suggestions li {
+    font-size: 1rem;
+  }
+
+  .home-passport-section-countrylist-progresscount {
+    font-size: 1rem;
+  }
+
+  .home-section-titledescription-black {
+    font-size: 1rem;
+  }
+  .home-passport-section-countrylist {
+    width: 100%;
+  }
+  .home-passport-section-country-name {
+    font-size: 1rem;
+  }
+
+  .home-passport-section-countrylist-item > div img {
+    width: 36px;
+    margin-right: .5rem;
+  }
+
+  .visa-openness-section {
+    padding: 0 0 5rem 0;
+  }
+
+  .visa-openness-section .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .visa-openness-section .container > div{
+    width: 100%;
+  }
+  .visa-openness-section h3 {
+    font-size: 2.2rem;
+    text-align: left;
+    width: 100%;
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .visa-openness-country  {
+    padding: 1rem 0 3rem 0;
+  }
+  .visa-openness-country h5  {
+    font-size: 1rem;
+  }
+
+  .visa-openness-countryselect-button {
+    width: 100%;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .visa-openness-score-large {
+    line-height: 100%;
+    font-size: 4rem;
+  }
+  .visa-openness-score-outof {
+    font-size: 2.2rem;
+    color: #9C9C9C;
+    margin-left: 0rem;
+  }
+  .visa-openness-country-stats {
+    margin-top: .5rem;
+    }
+  .visa-openness-country-stats ul li {
+    font-size: 1rem;
+    padding: .75rem 0;
+  }
+  .openness-dummy-image {
+    width: 100%;
+    height: auto;
+  }
+  .dashboard-container {
+    display: block;
+  }
+  .dashboard-sidebar {
+    width: 100%;
+  }
+  .mapbox-container {
+    display: none;
+  }
+
+  .dashboard-sidepanel-country-list {
+    height: 70vh;
+  }
+  .country-details{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width:100%;
+    height: auto;
+  }
+  .country-details-drawer {
+    padding: 1rem;
+    min-height: 100vh;
+    height: auto;
+  }
+  .details-close {
+    position: fixed;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    top: 0;
+    display: flex;
+    align-items: center;
+    z-index: 20;
+    }
+  .dashboard-sidepanel-header {
+    height: 30vh;
+  }
+}

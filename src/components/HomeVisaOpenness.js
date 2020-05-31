@@ -6,7 +6,7 @@ class HomeVisaOpenness extends React.Component {
             <div className='visa-openness-section'>
                 <div className='container'>
                     <div>
-                        <h3>Visa Openness when travelling to a country:</h3>
+                        <h3>Visa openness when travelling to a country:</h3>
                         <div className='visa-openness-country'>
                             <div className='visa-openness-countryselect-button'>United States</div>
                             <div className='visa-openness-score-group'>
@@ -27,7 +27,7 @@ class HomeVisaOpenness extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div><img alt="flag" src={require('../assets/dummy-assets/worldmap.png')} height='370' /></div>
+                    <div><img className='openness-dummy-image' alt="flag" src={require('../assets/dummy-assets/worldmap.png')} /></div>
                 </div>
             </div>
         )

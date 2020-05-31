@@ -12,19 +12,19 @@ class HomeCountryChooser extends React.Component {
     render() {
         return (
             <div className="home-section">
-                <div>
-                    <div className="container">
-                        <div className="home-logo">
-                            <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} width='300px' />
-                        </div>
-                        <h1>Explore where your passport can take you!</h1>
-                        <AutoComplete
-                        />
+                <div className="container">
+                    <div className="home-logo">
+                        <img alt='OpenPassport' src={require('../assets/images/op-logo-white.svg')} />
                     </div>
-                    <video autoPlay muted loop className="hero-video">
+                    <h1>Explore where your passport can take you!</h1>
+                    <AutoComplete
+                    />
+                </div>
+                <div className="hero-video">
+                    <video autoPlay muted loop >
                         <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
                     Your browser does not support HTML5 video.
-                    </video>
+                        </video>
                 </div>
             </div>
         )
