@@ -520,16 +520,16 @@ input:focus {
   .static-footer {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0 0 0;
-    background: #ffffff;
+    margin-top:5rem;
+    padding: 5rem 0 0 0;
     align-items: center;
+    border-top: 1px solid #eaeaea;
   }
 
    .static-message-footer{
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
-    background: #0D901D;
     min-height: 100px;
     display: flex;
     width: 100%;
@@ -546,16 +546,16 @@ input:focus {
      font-weight: 600;
    }
    .link-group > .link-item {
-     color: #ffffff;
+     color: #001B03;
      margin-right: 3rem;
      cursor: pointer;
    }
    .link-group > .link-item:hover {
-     color: #98D128;
+     color: #00A013;
    }
    .static-message-footer .logo {
      opacity: .5;
-     color: #ffffff;
+     color: #001B03;
    }
 
    .about-op {
