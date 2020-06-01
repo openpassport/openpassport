@@ -13,6 +13,8 @@ class HomeFooter extends React.Component {
                         <ul className='link-group'>
                             <Link className='link-item'
                                 to='/about'>About</Link>
+                            <li className='link-item'
+                            >API</li>
                             <Link className='link-item'
                                 to='/privacy'>Privacy</Link>
                             <Link className='link-item'
