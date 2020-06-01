@@ -59,10 +59,12 @@ ul {
 }
 
 .home-section {
+  position: relative;
   height: 96vh;
   overflow: hidden;
   padding: 1.5rem;
   border: 1rem solid white;
+  overflow: hidden;
 }
 
 .hero-video {
@@ -70,7 +72,7 @@ ul {
   top:0;
   left:0;
   z-index: -1;
-  width: 100%;
+  max-width: 100vw;
   height: auto;
   
 }
@@ -520,13 +522,114 @@ input:focus {
     flex-direction: column;
     padding: 1rem 0 0 0;
     background: #ffffff;
+    align-items: center;
   }
 
    .static-message-footer{
-      margin-top: 2rem;
-      background: #0D901D;
-      min-height: 300px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    background: #0D901D;
+    min-height: 100px;
+    display: flex;
+    width: 100%;
    }
+
+   .static-message-footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+   .static-message-footer .container .link-group {
+     display: flex;
+     font-weight: 600;
+   }
+   .link-group > .link-item {
+     color: #ffffff;
+     margin-right: 3rem;
+     cursor: pointer;
+   }
+   .link-group > .link-item:hover {
+     color: #98D128;
+   }
+   .static-message-footer .logo {
+     opacity: .5;
+     color: #ffffff;
+   }
+
+   .about-op {
+     background: #ffffff;
+     width: 100%;
+     height: 100%;
+   }
+   .about-op h1  {
+    font-family: 'Livvic', sans-serif;
+    text-align: center;
+    font-size: 3.5rem;
+   }
+
+   .about-op h3 {
+    font-family: 'Livvic', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+   }
+
+   .about-nav img {
+     height: 90px;
+   }
+
+   .about-navbar {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 1rem 0;
+   }
+   
+   .about-op-content {
+      padding: 4rem 0;
+      width: 70%;
+      margin: 0 auto;
+   }
+   .about-op-content >h4 {
+      font-family: 'Livvic', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+   }
+   .about-op-content p{
+      line-height: 1.8;
+      font-size: 1.4rem;
+      color: #606060;
+      margin: 1rem 0;
+   }
+
+   .about-op-team-container {
+      display: flex;
+      flex-direction: row;
+      width: 70%;
+      margin: 0 auto;
+   }
+    .about-op-team-container >div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2.5rem;
+    }
+   .about-op-team-container img {
+     height: 10rem;
+     margin-bottom: 1rem;
+   }
+   .about-op-team-container  h4{
+    font-family: 'Livvic', sans-serif;
+    font-size: 1.4rem;
+    padding: 0;
+   }
+    .about-op-team-container  p {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+
+    }
 
    @media only screen and (min-width:1400px) {
      .container {
