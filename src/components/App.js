@@ -5,7 +5,6 @@ import HomePage from './Home'
 import AboutOP from './AboutOP'
 import AboutPrivacy from './AboutPrivacy'
 import AboutTerms from './AboutTerms'
-import ScrollToTop from './ScrollToTop'
 import {
   BrowserRouter,
   Route,
@@ -19,13 +18,11 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <ScrollToTop>
-            <Route path='/undefined' component={ErrorPage} />
-            <Route path='/about' component={AboutOP} />
-            <Route path='/privacy' component={AboutPrivacy} />
-            <Route path='/terms' component={AboutTerms} />
-            <Route path='/:homeSlug' component={Dashboard} />
-          </ScrollToTop>
+          <Route path='/undefined' component={ErrorPage} />
+          <Route exact path='/about' component={AboutOP} />
+          <Route path='/privacy' component={AboutPrivacy} />
+          <Route path='/terms' component={AboutTerms} />
+          <Route path='/:homeSlug' component={Dashboard} />
           <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter >

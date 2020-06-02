@@ -5,6 +5,9 @@ import {
 } from 'react-router-dom'
 
 class AboutTerms extends React.Component {
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
     render() {
         return (
             <div className='about-op'>
