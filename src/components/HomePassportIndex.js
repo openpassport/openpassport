@@ -6,7 +6,7 @@ class HomePassportIndex extends React.Component {
             <div className="home-passport-section">
                 <div className="container">
                     <div>
-                        <h2 className="home-section-title-black">The Open passport Index</h2>
+                        <h2 className="home-section-title-black">The Openpassport Index</h2>
                         <p className="home-section-titledescription-black">The Open Passport Index is a measure that tracks the ability of the holder of the passport to travel visa-free. </p>
                     </div>
                     <ul className="home-passport-section-countrylist">

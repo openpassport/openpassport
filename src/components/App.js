@@ -18,14 +18,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route exact path='/' component={HomePage} />
           <ScrollToTop>
-            <Route exact path='/' component={HomePage} />
             <Route path='/undefined' component={ErrorPage} />
             <Route path='/about' component={AboutOP} />
             <Route path='/privacy' component={AboutPrivacy} />
             <Route path='/terms' component={AboutTerms} />
+            <Route path='/:homeSlug' component={Dashboard} />
           </ScrollToTop>
-          <Route path='/:homeSlug' component={Dashboard} />
           <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter >
