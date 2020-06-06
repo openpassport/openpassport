@@ -1,6 +1,5 @@
 import React from 'react'
 import HomePassportIndex from './HomePassportIndex'
-import HomeVisaOpenness from './HomeVisaOpenness'
 import HomeFooter from './HomeFooter'
 import HomeCountryChooser from './HomeCountryChooser'
 
@@ -26,7 +25,6 @@ class Home extends React.Component {
             <div>
                 <HomeCountryChooser />
                 <HomePassportIndex />
-                <HomeVisaOpenness />
                 <HomeFooter />
             </div>
         )

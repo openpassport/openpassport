@@ -23,12 +23,12 @@ class AboutOP extends React.Component {
                             <p>OpenPassport aims to make it effortless to find your next travel destination and sustainable experiences leveraging on data. We dream for a world without boundaries, where the opportunities are endless and we believe that to achieve this we should start by enabling free movement of people across the world.</p>
                         </div>
                         <div>
-                            <h3>Team</h3>
+                            <h3>Makers</h3>
                             <div className='about-op-team-container'>
                                 <div>
                                     <img alt='arun' src={require('../assets/images/arunraj.png')} />
                                     <h4>Arunraj Damodaran</h4>
-                                    <p>Design & UI Engineering</p>
+                                    <p>Design & Engineering</p>
                                 </div>
                                 <div>
                                     <img alt='nithin' src={require('../assets/images/nithink.png')} />

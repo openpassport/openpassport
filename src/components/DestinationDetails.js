@@ -45,34 +45,33 @@ class CountryDetails extends React.Component {
                                     </p>
                                 </div>
                             }
-                            {/* <div className="country-details-drawer-info">
-                                    <div className="country-details-drawer-info-item">
-                                        <div>
-                                            <img alt='weather' src={require('../assets/images/weather.svg')} width='52px' />
-                                        </div>
-                                        <div>
-                                            <p>Weather</p>
-                                            <h5>5°C</h5>
-                                        </div>
+                            <div className="country-details-drawer-info">
+                                <div className="country-details-drawer-info-item">
+                                    <div>
+                                        <img alt='weather' src={require('../assets/images/weather.svg')} width='52px' />
                                     </div>
-                                    <div className="country-details-drawer-info-item">
-                                        <div>
-                                            <img alt='flight' src={require('../assets/images/flight.svg')} width='52px' />
-                                        </div>
-                                        <div>
-                                            <p>Flight Price</p>
-                                            <h5>$740+</h5>
-                                        </div>
+                                    <div>
+                                        <p>Weather</p>
+                                        <h5>{item.destination.weather.temperature}°C</h5>
                                     </div>
-                                </div> */}
+                                </div>
+                                <div className="country-details-drawer-info-item">
+                                    <div>
+                                        <img alt='flight' src={require('../assets/images/flight.svg')} width='52px' />
+                                    </div>
+                                    <div>
+                                        <p>Flight Price</p>
+                                        <h5>$740+</h5>
+                                    </div>
+                                </div>
+                            </div>
                             <div className='country-details-drawer-subsection'>
                                 <h5>VISA REQUIREMENTS</h5>
-                                {/* <ul>
-                                        {item.requirement.map((listitem, i) => (
-                                            <li key={i}>{listitem}</li>
-                                        ))}
-                                        <li>Visa application form</li>
-                                    </ul> */}
+                                <ul>
+                                    {item.requirement.map((listitem, i) => (
+                                        <li key={i}>{i + 1}. {listitem}</li>
+                                    ))}
+                                </ul>
                             </div>
 
                         </div>
