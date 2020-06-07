@@ -154,9 +154,7 @@ class MapBox extends React.Component {
 
         if (!loading) {
             return (
-                <div>
-                    <div ref={this.mapRef} className="mapContainer" />
-                </div>
+                <div ref={this.mapRef} className="mapbox-container" />
             )
         }
         else {
