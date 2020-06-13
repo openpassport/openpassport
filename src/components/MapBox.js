@@ -35,7 +35,6 @@ class MapBox extends React.Component {
                 return lngLat.push(obj)
             })
 
-            console.log("asfaf", lngLat)
             for (var itemIndex in lngLat) {
                 featureCollection.push({
                     "type": "geojson",
