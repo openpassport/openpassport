@@ -4,28 +4,22 @@ on:
     branches:
       - master
 
-
-
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: echo "NODE_PATH=src" > .env
-    - run: npm run build
-      env:
-        CI: false
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build-prod
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
 
   deploy:
     name: Deploy
@@ -41,6 +35,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting --project openpassport
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
