@@ -24,7 +24,7 @@ jobs:
     - run: npm install
     - run: echo "NODE_PATH=src" > .env
     - run: npm run build
-    - env:
+      env:
         CI: false
 
   deploy:
