@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: echo "NODE_PATH=src" > .env
-    - run: npm run build-prod --if-present
+    - run: npm run build
 
   deploy:
     name: Deploy
