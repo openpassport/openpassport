@@ -125,7 +125,7 @@ class AutoComplete extends Component {
                                     className={className}
                                     key={item.slug}
                                     onClick={(e) => this.handleClick(e, selectedCountry)}>
-                                    <img alt='flag' src={`https://openpassport.co/static/${item.flag}`} width="24px" style={{ marginRight: "8px" }} />
+                                    <img alt='flag' src={`https://api.openpassport.co/static/${item.flag}`} width="24px" style={{ marginRight: "8px" }} />
                                     {item.name}
                                 </li>
                             );
