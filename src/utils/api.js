@@ -45,7 +45,7 @@ export function getDestinationBasic(homeId, destinationId) {
 }
 
 export function getAllCountries() {
-    return fetch("https://openpassport.co/api/op/countries/", headers)
+    return fetch("https://api.openpassport.co/api/op/countries/", headers)
         .then(data => data.json())
         .then(response => {
             return response
@@ -53,7 +53,7 @@ export function getAllCountries() {
 }
 
 export function getVisaDetails(sId, dId) {
-    return fetch(`https://openpassport.co/api/op/passport/visadetails?source_id=${sId}&destination_id=${dId}`, headers)
+    return fetch(`https://api.openpassport.co/api/op/passport/visadetails?source_id=${sId}&destination_id=${dId}`, headers)
         .then(data => data.json())
         .then(response => {
             return response
