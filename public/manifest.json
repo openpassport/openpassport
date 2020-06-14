@@ -1,6 +1,6 @@
 {
-  "short_name": "OpenPassport",
-  "name": "OpenPassport aims to make it effortless to find your next travel destination and sustainable experiences leveraging on data.",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
