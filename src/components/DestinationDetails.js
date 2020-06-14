@@ -69,10 +69,10 @@ class CountryDetails extends React.Component {
                             </div>
                             <div>
                                 Last updated on 16june
-                                <button>Report Error</button>
+                                <span>Report Error</span>
                             </div>
 
-                            <Link to={`/${this.props.match.params.homeSlug}`} className='details-close' onClick={this.clickToReset}>
+                            <Link to={`/${this.props.match.params.homeSlug}`} className={styles.detailsClose} onClick={this.clickToReset}>
                                 <img alt='close' src={require('../assets/images/close.svg')} width="16px" />
                             </Link>
                         </div>
