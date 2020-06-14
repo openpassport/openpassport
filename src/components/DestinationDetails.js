@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import TabCountryHome from './TabCountryHome'
 import TabBTV from './TabBTV'
 import TabDestinations from './TabDestinations'
+import styles from '../assets/styles/dashboard.module.css'
 
 
 class CountryDetails extends React.Component {
@@ -60,9 +61,9 @@ class CountryDetails extends React.Component {
             const item = destinationDetails[0]
             return (
                 <div>
-                    <div className='destination-details-header'>
-                        <div className='title-row'>
-                            <div className='destination-title'>
+                    <div className={styles.destinationDetailsHeader}>
+                        <div className={styles.titleRow}>
+                            <div className={styles.destinationTitle}>
                                 <img alt='flag' src={`https://api.openpassport.co/static/${item.destination.flag}`} height="24px" style={{ marginRight: "8px" }} />
                                 <h1>{item.destination.name}</h1>
                             </div>
@@ -75,7 +76,7 @@ class CountryDetails extends React.Component {
                                 <img alt='close' src={require('../assets/images/close.svg')} width="16px" />
                             </Link>
                         </div>
-                        <div className='destination-header-tab-group'>
+                        <div className={styles.destinationHeaderTabGroup}>
                             <li style={{
                                 color: showAbout === true ? '#00A013' : '#001B03'
                             }} onClick={this.showAboutTab}>About</li>

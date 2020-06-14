@@ -11,6 +11,7 @@ import {
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
 import MapBox from './MapBox'
+import styles from '../assets/styles/dashboard.module.css'
 
 const free = "visa-not-required"
 const required = "visa-required"
@@ -72,24 +73,24 @@ class Dashboard extends React.Component {
 
         if (!loading) {
             return (
-                <div className='dashboard-container'>
-                    <div className='dashboard-sidebar'>
-                        <div className="dashboard-sidepanel-header">
-                            <div className='logo-container'>
-                                <div className="dashboard-sidepanel-logo">
+                <div className={styles.dashboardContainer}>
+                    <div className={styles.dashboardSidebar}>
+                        <div>
+                            <div className={styles.logoContainer}>
+                                <div className={styles.dashboardSidepanelLogo}>
                                     <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
                                 </div>
                                 {sourceCountry &&
                                     <Link
-                                        className="dashboard-sidepanel-country-select-button"
+                                        className={styles.dashboardSidepanelCountrySelectButton}
                                         onClick={() => this.clickToReset()}
                                         to='/'>
-                                        <span className="form-label">Your home country</span>
-                                        <span className="form-title">{sourceCountry.name}</span>
+                                        <span className={styles.formLabel}>Your home country</span>
+                                        <span className={styles.formTitle}>{sourceCountry.name}</span>
                                     </Link>
                                 }
                             </div>
-                            <div className='dashboard-sidepanel-tab-group'>
+                            <div className={styles.dashboardSidepanelTabGroup}>
                                 <li
                                     style={{
                                         background: showVisaFree === true ? '#00A013' : 'rgb(0, 160, 19, 0.1)',
@@ -116,9 +117,9 @@ class Dashboard extends React.Component {
                                 </li>
                             </div>
                         </div>
-                        <div className="dashboard-sidepanel-country-list">
+                        <div className={styles.dashboardSidepanelCountryList}>
                             {list.map((item, i) => (
-                                <Link className="dashboard-sidepanel-country-list-item"
+                                <Link className={styles.dashboardSidepanelCountryListItem}
                                     key={i}
                                     to={`${this.props.match.url}/${item.slug}`} >
                                     <h3>
@@ -131,7 +132,7 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
 
-                    <div className="country-details">
+                    <div className={styles.countryDetails}>
                         <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
                         <MapBox countryList={list} className='mapbox-container' />
                     </div>

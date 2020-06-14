@@ -154,104 +154,6 @@ input:focus {
   border-bottom: 1px solid rgb(240, 240, 240);
 }
 
-.dashboard-container {
-  display: flex;
-}
-
-.dashboard-sidebar {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  height: 100vh;
-  background: #ffffff;
-  flex-grow: 1;
-}
-
-.dashboard-sidepanel-header {
-    position: relative;;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 200px;
-  }
-  .logo-container {
-    padding: 1rem;
-  }
-  .dashboard-sidepanel-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 0 0 2rem 0;
-  }
-  .dashboard-sidepanel-country-select-button {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    padding: 0.5rem 1rem;
-    border: 1px solid #e1e8e3;
-    border-radius: 6  px;
-  }
-  .dashboard-sidepanel-country-select-button:hover {
-    background: #F3F6F9;
-  }
-  .dashboard-sidepanel-country-select-button .form-label {
-    font-size: 1rem;
-  }
-  .dashboard-sidepanel-country-select-button .form-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .dashboard-sidepanel-tab-group {
-    display: flex;
-    width: 100%;
-    position: relative;
-    top:0;
-    height: 50px;
-  }
-  
-  .dashboard-sidepanel-tab-group li {
-    flex-grow: 1;
-    text-align: center;
-    padding: 1rem 0;
-    cursor: pointer;
-    font-weight: 500;
-  }
-
-  .dashboard-sidepanel-country-list {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    position: relative;
-    overflow-y: scroll;
-    height: calc(100vh - 200px);
-  }
-  .dashboard-sidepanel-country-list-item {
-    padding: 0.75rem 1rem;
-    margin-top: 0.5rem;
-    cursor: pointer;
-  }
-
-  .dashboard-sidepanel-country-list-item:hover{
-    background: #F3F6F9;
-  }
-  .dashboard-sidepanel-country-list-item:hover h3{
-    color: #00A013;
-  }
-  .dashboard-sidepanel-country-list-item h3 {
-    color: #33363F;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-  }
-  .dashboard-sidepanel-country-list-item p {
-    margin-top: .1rem;
-    font-family: 'Inter', sans-serif;
-    opacity: .7;
-    color: #33363F;
-    font-size: .9rem;
-  }
   .dashboard-loading {
     position: absolute;
     top:0;
@@ -276,20 +178,6 @@ input:focus {
 
 
 /**Country details**/
-.country-details {
-  position: relative;
-  font-family: 'Inter', sans-serif;
-  color: #33363F;
-  flex-grow: 3;
-  height: 100vh;
-}
-
-.country-details >div{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
 
 .country-details-drawer {
   position: relative;
@@ -381,44 +269,6 @@ input:focus {
   width: 100%;
   height: 100%;
   background: white;
-}
-
-.destination-details-header{
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  min-height: 120px;
-  z-index: 9;
-}
-
-.destination-details-header .title-row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.destination-title {
-  display: flex;
-  align-items: center;
-}
-
-
-.destination-header-tab-group {
-  display: flex;
-  padding: 2rem 0 0 0;
-}
-
-.destination-header-tab-group li {
-  margin-right: 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.destination-header-tab-group li:hover {
-  color: #00A013;
-  cursor: pointer;
 }
 
 .tab-full-width-bg {
@@ -864,19 +714,11 @@ input:focus {
     width: 100%;
     height: auto;
   }
-  .dashboard-container {
-    display: block;
-  }
-  .dashboard-sidebar {
-    width: 100%;
-  }
+ 
   .mapbox-container {
     display: none;
   }
 
-  .dashboard-sidepanel-country-list {
-    height: auto;
-  }
   .country-details{
     width:100%;
     height: auto;
@@ -896,12 +738,7 @@ input:focus {
     align-items: center;
     z-index: 20;
     }
-  .dashboard-sidepanel-header {
-    height: 30vh;
-  }
-  .dashboard-sidepanel-logo {
-    align-items: center;
-  }
+    
 
   .static-footer {
     padding-top: 2rem;

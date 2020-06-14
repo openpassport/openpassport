@@ -1,0 +1,183 @@
+.dashboard-container {
+  display: flex;
+}
+
+.destinationDetailsHeader   {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  min-height: 120px;
+  z-index: 9;
+}
+
+.destinationDetailsHeader .titleRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.destinationTitle {
+  display: flex;
+  align-items: center;
+}
+
+.destinationHeaderTabGroup {
+  display: flex;
+  padding: 2rem 0 0 0;
+}
+
+.destinationHeaderTabGroup li {
+  margin-right: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.destinationHeaderTabGroup li:hover {
+  color: #00A013;
+  cursor: pointer;
+}
+
+.dashboardContainer {
+  display: flex;
+}
+
+.dashboardSidebar {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  height: 100vh;
+  background: #ffffff;
+  flex-grow: 1;
+}
+
+.logoContainer {
+    padding: 1rem;
+  }
+
+/* .dashboardSidepanelHeader {
+    position: relative;;
+    background:red;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+  } */
+   .dashboardSidepanelLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 0 0 2rem 0;
+  }
+
+   .dashboardSidepanelCountrySelectButton {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e1e8e3;
+    border-radius: 6  px;
+  }
+  .dashboardSidepanelCountrySelectButton:hover {
+    background: #F3F6F9;
+  }
+  .dashboardSidepanelCountrySelectButton .formLabel {
+    font-size: 1rem;
+  }
+  .dashboardSidepanelCountrySelectButton .formTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .dashboardSidepanelTabGroup {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top:0;
+    height: 50px;
+  }
+  
+  .dashboardSidepanelTabGroup li {
+    flex-grow: 1;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .dashboardSidepanelCountryList {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+    overflow-y: scroll;
+    height: calc(100vh - 200px);
+  }
+  .dashboardSidepanelCountryListItem {
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+
+  .dashboardSidepanelCountryListItem:hover{
+    background: #F3F6F9;
+  }
+
+  .dashboardSidepanelCountryListItem:hover h3{
+    color: #00A013;
+  }
+
+  .dashboardSidepanelCountryListItem h3 {
+    color: #33363F;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+  }
+
+  .dashboardSidepanelCountryListItem p {
+    margin-top: .1rem;
+    font-family: 'Inter', sans-serif;
+    opacity: .7;
+    color: #33363F;
+    font-size: .9rem;
+  }
+
+  .countryDetails {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: #33363F;
+  flex-grow: 3;
+  height: 100vh;
+}
+
+.countryDetails >div{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (min-device-width : 375px)and (max-device-width : 667px) {
+   .dashboardContainer {
+    display: block;
+  }
+
+  .dashboardSidebar {
+    width: 100%;
+  }
+
+  .dashboardSidepanelLogo {
+    align-items: center;
+  }
+
+  .dashboardSidepanelCountryList {
+    height: auto;
+  }
+  /* .dashboardSidepanelHeader {
+    height:200px;
+  } */
+
+}
+
+
