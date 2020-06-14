@@ -890,4 +890,19 @@ input:focus {
   .dashboard-sidepanel-header {
     height: 30vh;
   }
+
+  .static-footer {
+    padding-top: 2rem;
+    margin-top:0;
+  }
+  .static-message-footer .container {
+    flex-direction: column;
+  }
+  .static-message-footer .link-group {
+    padding: 0 1rem;
+    margin:0 auto;
+  }
+  .static-message-footer .logo{
+    text-align: center;
+  }
 }
