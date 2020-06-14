@@ -67,14 +67,6 @@ class Dashboard extends React.Component {
                 ? requiredList
                 : arrivalList
 
-        //if (sourceCountry.slug !== this.props.match.params.homeSlug.toLowerCase()) {
-        //console.log("hi")
-        //     console.log("442314124", this.props.match.params.homeSlug, this.props.sourceCountry.slug)
-        //     if ((Object.keys(this.props.sourceCountry).length !== 0) && (this.props.match.params.homeSlug.toLowerCase() !== this.props.sourceCountry.slug)) {
-        //         return <Redirect to='/undefined' />
-        //     }
-        //}
-
         if (!loading) {
             return (
                 <div className='dashboard-container'>

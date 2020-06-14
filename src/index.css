@@ -173,8 +173,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: space-between;
-    min-height: 25vh;
+    height: 200px;
   }
   .logo-container {
     padding: 1rem;
@@ -223,7 +222,7 @@ input:focus {
     padding: 0;
     position: relative;
     overflow-y: scroll;
-    max-height: 75vh;
+    height: calc(100vh - 200px);
   }
   .dashboard-sidepanel-country-list-item {
     padding: 0.75rem 1rem;
