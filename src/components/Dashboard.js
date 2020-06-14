@@ -27,7 +27,10 @@ class Dashboard extends React.Component {
         }
         this.props.dispatch(handleSourceCountryData(this.props.match.params.homeSlug))
         this.props.dispatch(handleSourceCountry(this.props.match.params.homeSlug))
+    }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
 
     showArrival = () => {
