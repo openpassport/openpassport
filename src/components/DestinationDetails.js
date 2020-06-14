@@ -57,7 +57,7 @@ class CountryDetails extends React.Component {
         const { loading, destinationDetails } = this.props
         const { showAbout, showBTV, showDestinations } = this.state
         if (!loading) {
-            const item = this.props.destinationDetails[0]
+            const item = destinationDetails[0]
             return (
                 <div>
                     <div className='destination-details-header'>

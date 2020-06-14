@@ -1,9 +1,9 @@
 const logger = (store) => (next) => (action) => {
-    console.group(action.type)
+    //console.group(action.type)
     //console.log('The action is', action)
     const returnValue = next(action)
     //console.log('The next state is', store.getState())
-    console.groupEnd()
+    //console.groupEnd()
     return returnValue
 }
 

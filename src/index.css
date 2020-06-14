@@ -64,7 +64,6 @@ ul {
   overflow: hidden;
   padding: 1.5rem;
   border: 1rem solid white;
-  overflow: hidden;
 }
 
 .hero-video {
@@ -103,6 +102,7 @@ ul {
   font-size: 1.3rem;
   padding: 1rem 1.5rem;
   margin-top: 1.5rem;
+  z-index: 100;
 }
 
 input:focus {
