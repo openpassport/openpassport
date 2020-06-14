@@ -616,6 +616,8 @@ input:focus {
    .static-message-footer .container .link-group {
      display: flex;
      font-weight: 600;
+     width: 30%;
+    justify-content: space-between;
    }
    .link-group > .link-item {
      color: #001B03;
@@ -645,6 +647,7 @@ input:focus {
     font-family: 'Livvic', sans-serif;
     font-size: 2.5rem;
     text-align: center;
+    margin-top: 5rem;
    }
 
    .about-nav img {
@@ -673,6 +676,7 @@ input:focus {
       font-size: 1.4rem;
       color: #606060;
       margin: 1rem 0;
+      hyphens: auto;
    }
 
    .about-op-team-container {
@@ -895,12 +899,12 @@ input:focus {
 
   .static-footer {
     padding-top: 2rem;
-    margin-top:0;
+    margin-top: 2rem;
   }
   .static-message-footer .container {
     flex-direction: column;
   }
-  .static-message-footer .link-group {
+  .static-message-footer .container .link-group {
     padding: 0 1rem;
     margin:0 auto;
     justify-content: space-between;
@@ -908,5 +912,35 @@ input:focus {
   }
   .static-message-footer .logo{
     text-align: center;
+  }
+
+  .about-op-team-container {
+    flex-direction: column;
+  }
+
+  .about-op-content {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  .about-op h1 {
+    margin-top: 3rem;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+
+  .about-op-content p {
+    line-height: 1.7;
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+
+  .about-op-team-container > div {
+    margin: 2rem 0;
+  }
+
+  .about-op-team-container h4, .about-op-team-container p {
+    text-align: center;
+    line-height: 120%;
   }
 }
