@@ -743,7 +743,8 @@ input:focus {
   .home-section {
     width: 100%;
     position: relative;
-    padding: 1rem;
+    padding: 1.5rem;
+    height: 85vh;
   }
 
   .home-section h1 {
