@@ -606,6 +606,7 @@ input:focus {
    }
 
    .static-message-footer .container {
+     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -617,7 +618,7 @@ input:focus {
    }
    .link-group > .link-item {
      color: #001B03;
-     margin-right: 3rem;
+     margin-right: 5%;
      cursor: pointer;
    }
    .link-group > .link-item:hover {
@@ -901,6 +902,8 @@ input:focus {
   .static-message-footer .link-group {
     padding: 0 1rem;
     margin:0 auto;
+    justify-content: space-between;
+    width: 100%;
   }
   .static-message-footer .logo{
     text-align: center;
