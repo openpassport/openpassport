@@ -745,7 +745,7 @@ input:focus {
     position: relative;
     padding: 1.5rem;
     min-height: 85vh;
-    padding-bottom: 20rem;
+    padding-bottom: 10rem;
   }
 
   .home-section h1 {
