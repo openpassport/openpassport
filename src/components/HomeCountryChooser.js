@@ -21,7 +21,7 @@ class HomeCountryChooser extends React.Component {
                     />
                 </div>
                 <div className="hero-video">
-                    <video autoPlay muted loop poster={require('../assets/images/hero-poster.jpg')} >
+                    <video autoPlay muted loop >
                         <source src={require('../assets/images/hero-bg.mp4')} type="video/mp4" />
                     Your browser does not support HTML5 video.
                         </video>
