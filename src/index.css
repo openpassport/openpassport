@@ -179,6 +179,9 @@ input:focus {
     padding: 1rem;
   }
   .dashboard-sidepanel-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
     padding: 0 0 2rem 0;
   }
   .dashboard-sidepanel-country-select-button {
@@ -187,7 +190,7 @@ input:focus {
     flex-direction: column;
     background: #ffffff;
     padding: 0.5rem 1rem;
-    border: 1px solid #F3F6F9;
+    border: 1px solid #e1e8e3;
   }
   .dashboard-sidepanel-country-select-button:hover {
     background: #F3F6F9;
@@ -894,6 +897,9 @@ input:focus {
     }
   .dashboard-sidepanel-header {
     height: 30vh;
+  }
+  .dashboard-sidepanel-logo {
+    align-items: center;
   }
 
   .static-footer {
