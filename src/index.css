@@ -62,7 +62,7 @@ ul {
   position: relative;
   padding: 1.5rem;
   border: 1rem solid white;
-  height: 86vh;
+  min-height: 85vh;
   padding-bottom: 10rem;
 }
 
@@ -734,15 +734,13 @@ input:focus {
 
 
 @media only screen and (min-device-width : 375px)and (max-device-width : 667px)  {
-  
-  .home-section {
-    border: none;
-  }
+
   .home-section .container {
     width: 100%;
   }
 
   .home-section {
+    border: none;
     width: 100%;
     position: relative;
     padding: 1.5rem;
