@@ -168,13 +168,19 @@
 }
 
 .detailsClose {
-  position: fixed;
-  width: 3rem;
-  height: 3rem;
-  top: 0;
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  left: -2.5rem;
+  top:0;
+  background: rgb(238, 238, 238);
   display: flex;
   align-items: center;
   z-index: 20;
+}
+
+.detailsClose img {
+  margin: 0 auto;
 }
     
 
@@ -184,9 +190,7 @@
   }
 
   .dashboardSidebar {
-    position: relative;
     width: 100%;
-    z-index: 0;
   }
 
   .dashboardSidepanelLogo {
@@ -203,10 +207,10 @@
 
   .countryDetails {
     position: absolute;
-    left: 0;
-    top:0;
-    height: 100%;
-    width: 100%;
+    top: 0;
+    z-index: 10;
+    width:100%;
+    height: auto;
   }
 
   .destinationDetailsHeader {
@@ -226,6 +230,11 @@
   .destinationHeaderTabGroup li {
     font-size: 1rem;
     margin: 0
+  }
+
+  .detailsClose {
+    position: fixed;
+    left: calc(100vw - 2.5rem);
   }
   
   /* .dashboardSidepanelHeader {
