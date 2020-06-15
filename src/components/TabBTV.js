@@ -1,11 +1,11 @@
 import React from 'react'
+import styles from '../assets/styles/destinationtabs.module.css'
 
 class TabBTV extends React.Component {
     render() {
         return (
-            <div className="tab-full-width-bg">
-                BTV
-                <img alt='placeholder' src={require('../assets/dummy-assets/infographic.svg')} height='400px' />
+            <div className="tabFullWidthBg">
+                Coming Soon
             </div>
         )
     }

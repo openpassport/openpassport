@@ -3,8 +3,8 @@ import React from 'react'
 class TabDestinations extends React.Component {
     render() {
         return (
-            <div className="tab-full-width-bg">
-                Destination
+            <div className="tabFullWidthBg">
+                Coming Soon
             </div>
         )
     }
