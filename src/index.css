@@ -234,6 +234,7 @@ input:focus {
   letter-spacing: 2px;
   padding-bottom: .5rem;
   font-size: .8rem;
+  text-transform: uppercase;
 }
 .country-details-drawer-subsection p {
   line-height: 150%;

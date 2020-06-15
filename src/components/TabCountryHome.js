@@ -7,10 +7,6 @@ class TabCountryHome extends React.Component {
         const item = this.props.details
         return (
             <div key={item.destination.id} className="country-details-drawer" >
-                <div>
-                    <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].visa}>Visa</a>
-                    <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].tourism}>Tourism</a>
-                </div>
                 {item.destination.description &&
                     <div className='country-details-drawer-subsection'>
                         <h5>ABOUT</h5>
@@ -46,6 +42,15 @@ class TabCountryHome extends React.Component {
                             <li key={i}>{i + 1}. {listitem}</li>
                         ))}
                     </ul>
+                </div>
+                <div className='country-details-drawer-subsection'>
+                    <h5>Official Links</h5>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].visa}>Visa</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].tourism}>Tourism</a>
+                    </li>
                 </div>
 
             </div>

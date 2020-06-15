@@ -69,7 +69,7 @@ class CountryDetails extends React.Component {
                             </div>
                             <div>
                                 Last updated on 16june
-                                <span>Report Error</span>
+                                <a target="_blank" rel="noopener noreferrer" href='https://docs.google.com/forms/d/e/1FAIpQLSf8D7XNOV5gIMUyR7POODiVuvNAnENzaSIXm65OfAONSdwZpA/viewform?usp=sf_link'>Report Error</a>
                             </div>
 
                             <Link to={`/${this.props.match.params.homeSlug}`} className={styles.detailsClose} onClick={this.clickToReset}>
