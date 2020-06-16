@@ -80,7 +80,7 @@ class MapBox extends React.Component {
                             '#D93E69',
                             '#00A013'
                         ],
-                        'circle-opacity': 0.6
+                        'circle-opacity': 0.7
                     },
                 })
             })
@@ -88,8 +88,6 @@ class MapBox extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-
-        console.log("asfaffaf12409090914", this.props.countryList)
         if (Object.keys(this.props.countryList).length !== Object.keys(prevProps.countryList).length) {
             var featureCollection = []
             const lngLat = []
