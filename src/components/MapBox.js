@@ -68,7 +68,7 @@ class MapBox extends React.Component {
                             'case',
                             ['boolean', ['feature-state', 'hover'], false],
                             16,
-                            8
+                            10
                         ],
                         "circle-color": [
                             'match',
