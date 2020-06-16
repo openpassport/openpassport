@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import styles from '../assets/styles/dashboard.module.css'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ1bmRzZ24iLCJhIjoiY2thamE3cnU0MDhwbTJybWlmdHloZmxvdiJ9.K_-a3_f8K5f1780lG7YLWA'
-
+var hoveredStateId = null;
 
 class MapBox extends React.Component {
     constructor(props) {
@@ -38,10 +38,11 @@ class MapBox extends React.Component {
 
             for (var itemIndex in lngLat) {
                 featureCollection.push({
-                    "type": "geojson",
+                    "type": "Feature",
                     "properties": {
                         'visatype': lngLat[itemIndex].visatype
                     },
+                    "id": itemIndex,
                     "geometry": {
                         "type": "Point",
                         "coordinates": lngLat[itemIndex].coordinate
@@ -60,15 +61,15 @@ class MapBox extends React.Component {
                 this.addLayer({
                     "id": "location",
                     "source": "point",
+                    'layout': {},
                     "type": "circle",
                     "paint": {
-                        "circle-radius": {
-                            'base': 8,
-                            'stops': [
-                                [1.5, 10],
-                                [2, 10]
-                            ]
-                        },
+                        "circle-radius": [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            16,
+                            8
+                        ],
                         "circle-color": [
                             'match',
                             ['get', 'visatype'],
@@ -80,7 +81,12 @@ class MapBox extends React.Component {
                             '#D93E69',
                             '#00A013'
                         ],
-                        'circle-opacity': 0.7
+                        'circle-opacity': [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            0.8,
+                            0.5
+                        ]
                     },
                 })
             })
@@ -101,18 +107,21 @@ class MapBox extends React.Component {
             })
             for (var itemIndex in lngLat) {
                 featureCollection.push({
-                    "type": "geojson",
+                    "type": "Feature",
                     "properties": {
                         'visatype': lngLat[itemIndex].visatype
                     },
+                    "id": itemIndex,
                     "geometry": {
                         "type": "Point",
                         "coordinates": lngLat[itemIndex].coordinate
                     }
                 })
             }
+            console.log("feature collection", featureCollection)
 
             this.map.on('load', function (e) {
+                console.log("featurecollection:", featureCollection)
                 if (this.getSource('point') !== undefined) {
                     this.getSource('point').setData({
                         "type": "FeatureCollection",
@@ -139,12 +148,39 @@ class MapBox extends React.Component {
         }
         else {
             this.map.flyTo({
-                center: [this.props.destinationDetails[0].destination.longitude, this.props.destinationDetails[0].destination.latitude],
-                zoom: 4.5,
+                center: [this.props.destinationDetails[0].destination.longitude - 2, this.props.destinationDetails[0].destination.latitude],
+                zoom: 5,
                 essential: true,
                 speed: 1.5,
             })
         }
+        //hover-start
+        this.map.on('mousemove', 'location', function (e) {
+            console.log("hersi ", e.features[0].id)
+            if (e.features.length > 0) {
+                if (hoveredStateId) {
+                    this.setFeatureState(
+                        { source: 'point', id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+                hoveredStateId = e.features[0].id;
+                this.setFeatureState(
+                    { source: 'point', id: hoveredStateId },
+                    { hover: true }
+                )
+            }
+        })
+        this.map.on('mouseleave', "location", function () {
+            if (hoveredStateId) {
+                this.setFeatureState(
+                    { source: 'point', id: hoveredStateId },
+                    { hover: false }
+                );
+            }
+            hoveredStateId = null;
+        });
+        //hover-end
     }
 
     render() {

@@ -4,7 +4,7 @@ import styles from '../assets/styles/destinationtabs.module.css'
 class TabBTV extends React.Component {
     render() {
         return (
-            <div className="tabFullWidthBg">
+            <div className={styles.tabFullWidthBg}>
                 Coming Soon
             </div>
         )
