@@ -148,7 +148,7 @@ class Dashboard extends React.Component {
             }
             else {
                 return (
-                    <p>Page does not exist</p>
+                    <p>Page does not exist. Invalid country</p>
                 )
             }
         }
