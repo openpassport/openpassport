@@ -97,11 +97,11 @@ class CountryDetails extends React.Component {
         }
         else {
             return (
-                <div className="country-details-drawer">
-                    <div className='loading-container'>
+                <div className='loading-container'>
+                    <div>
                         <img alt="loading indicator" src={require('../assets/images/load.svg')} width="60px" height="60px" />
                             Loading
-                        </div>
+                    </div>
                 </div>
             )
         }

@@ -10,7 +10,9 @@ class MapBox extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            initialData: this.props.countryList
+            initialData: this.props.countryList,
+            selectedDestination: '',
+            openDestination: false,
         }
     }
     mapRef = React.createRef()
@@ -40,7 +42,9 @@ class MapBox extends React.Component {
                 featureCollection.push({
                     "type": "Feature",
                     "properties": {
-                        'visatype': lngLat[itemIndex].visatype
+                        'visatype': lngLat[itemIndex].visatype,
+                        'slug': lngLat[itemIndex].slug,
+                        'name': lngLat[itemIndex].name
                     },
                     "id": itemIndex,
                     "geometry": {
@@ -109,7 +113,9 @@ class MapBox extends React.Component {
                 featureCollection.push({
                     "type": "Feature",
                     "properties": {
-                        'visatype': lngLat[itemIndex].visatype
+                        'visatype': lngLat[itemIndex].visatype,
+                        'slug': lngLat[itemIndex].slug,
+                        'name': lngLat[itemIndex].name
                     },
                     "id": itemIndex,
                     "geometry": {
@@ -118,10 +124,8 @@ class MapBox extends React.Component {
                     }
                 })
             }
-            console.log("feature collection", featureCollection)
 
             this.map.on('load', function (e) {
-                console.log("featurecollection:", featureCollection)
                 if (this.getSource('point') !== undefined) {
                     this.getSource('point').setData({
                         "type": "FeatureCollection",
@@ -151,12 +155,12 @@ class MapBox extends React.Component {
                 center: [this.props.destinationDetails[0].destination.longitude - 2, this.props.destinationDetails[0].destination.latitude],
                 zoom: 5,
                 essential: true,
-                speed: 1.5,
+                speed: .6,
             })
         }
         //hover-start
         this.map.on('mousemove', 'location', function (e) {
-            console.log("hersi ", e.features[0].id)
+            this.getCanvas().style.cursor = 'pointer'
             if (e.features.length > 0) {
                 if (hoveredStateId) {
                     this.setFeatureState(
@@ -172,6 +176,7 @@ class MapBox extends React.Component {
             }
         })
         this.map.on('mouseleave', "location", function () {
+            this.getCanvas().style.cursor = '';
             if (hoveredStateId) {
                 this.setFeatureState(
                     { source: 'point', id: hoveredStateId },
@@ -181,6 +186,19 @@ class MapBox extends React.Component {
             hoveredStateId = null;
         });
         //hover-end
+
+        //click-start
+        this.map.on('click', 'location', (e) => {
+            if (e.features.length > 0) {
+                var cord = e.features[0].geometry.coordinates
+                var nam = e.features[0].properties.name
+                console.log("hei", this.props)
+                new mapboxgl.Popup()
+                    .setLngLat(cord)
+                    .setHTML(nam)
+                    .addTo(this.map)
+            }
+        })
     }
 
     render() {

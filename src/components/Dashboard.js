@@ -134,7 +134,7 @@ class Dashboard extends React.Component {
 
                     <div className={styles.countryDetails}>
                         <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
-                        <MapBox countryList={list} />
+                        <MapBox countryList={list} links={this.props.match.url} />
                     </div>
 
                 </div >
