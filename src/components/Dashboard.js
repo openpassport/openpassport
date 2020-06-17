@@ -7,7 +7,8 @@ import {
 import {
     handleSourceCountryData,
     handleSourceCountry,
-    handleResetSourceDes
+    handleResetSourceDes,
+    handleInitialData
 } from '../actions/shared'
 import DestinationDetails from './DestinationDetails'
 import MapBox from './MapBox'
@@ -32,6 +33,7 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0)
+        this.props.dispatch(handleInitialData())
     }
 
     showArrival = () => {
@@ -63,82 +65,92 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        console.log("from url", this.props.match.params.homeSlug)
         const { showArrival, showRequired, showVisaFree } = this.state
-        const { loading, sourceCountry, requiredList, freeList, arrivalList } = this.props
+        const { loading, sourceCountry, requiredList, freeList, arrivalList, stateSlugs } = this.props
         const list = showVisaFree === true
             ? freeList
             : showRequired === true
                 ? requiredList
                 : arrivalList
+        const valid = stateSlugs.filter((item) => item === this.props.match.params.homeSlug ? true : false)
+        console.log("$$$$%%%", valid)
 
         if (!loading) {
-            return (
-                <div className={styles.dashboardContainer}>
-                    <div className={styles.dashboardSidebar}>
-                        <div>
-                            <div className={styles.logoContainer}>
-                                <div className={styles.dashboardSidepanelLogo}>
-                                    <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+            if (valid.length > 0) {
+                return (
+                    <div className={styles.dashboardContainer}>
+                        <div className={styles.dashboardSidebar}>
+                            <div>
+                                <div className={styles.logoContainer}>
+                                    <div className={styles.dashboardSidepanelLogo}>
+                                        <img alt='Openpassport' src={require('../assets/images/op-logo.svg')} width='175px' />
+                                    </div>
+                                    {sourceCountry &&
+                                        <Link
+                                            className={styles.dashboardSidepanelCountrySelectButton}
+                                            onClick={() => this.clickToReset()}
+                                            to='/'>
+                                            <span className={styles.formLabel}>Your home country</span>
+                                            <span className={styles.formTitle}>{sourceCountry.name}</span>
+                                        </Link>
+                                    }
                                 </div>
-                                {sourceCountry &&
-                                    <Link
-                                        className={styles.dashboardSidepanelCountrySelectButton}
-                                        onClick={() => this.clickToReset()}
-                                        to='/'>
-                                        <span className={styles.formLabel}>Your home country</span>
-                                        <span className={styles.formTitle}>{sourceCountry.name}</span>
+                                <div className={styles.dashboardSidepanelTabGroup}>
+                                    <li
+                                        style={{
+                                            background: showVisaFree === true ? '#00A013' : 'rgb(0, 160, 19, 0.1)',
+                                            color: showVisaFree === true ? 'white' : '#001B03'
+                                        }}
+                                        onClick={this.showVisaFree}>
+                                        Visa free
+                                    </li>
+                                    <li
+                                        style={{
+                                            background: showArrival === true ? '#DEAF09' : 'rgb(0, 160, 19, 0.1)',
+                                            color: showArrival === true ? 'white' : '#001B03'
+                                        }}
+                                        onClick={this.showArrival}>
+                                        Visa on arrival
+                                </li>
+                                    <li
+                                        style={{
+                                            background: showRequired === true ? '#D93E69' : 'rgb(0, 160, 19, 0.1)',
+                                            color: showRequired === true ? 'white' : '#001B03'
+                                        }}
+                                        onClick={this.showRequired}>
+                                        Visa required
+                                </li>
+                                </div>
+                            </div>
+                            <div className={styles.dashboardSidepanelCountryList}>
+                                {list.map((item, i) => (
+                                    <Link className={styles.dashboardSidepanelCountryListItem}
+                                        key={i}
+                                        to={`${this.props.match.url}/${item.slug}`} >
+                                        <h3>
+                                            {item.name}
+                                        </h3>
+                                        <p>{item.capital}  </p>
                                     </Link>
+                                ))
                                 }
                             </div>
-                            <div className={styles.dashboardSidepanelTabGroup}>
-                                <li
-                                    style={{
-                                        background: showVisaFree === true ? '#00A013' : 'rgb(0, 160, 19, 0.1)',
-                                        color: showVisaFree === true ? 'white' : '#001B03'
-                                    }}
-                                    onClick={this.showVisaFree}>
-                                    Visa free
-                                    </li>
-                                <li
-                                    style={{
-                                        background: showArrival === true ? '#DEAF09' : 'rgb(0, 160, 19, 0.1)',
-                                        color: showArrival === true ? 'white' : '#001B03'
-                                    }}
-                                    onClick={this.showArrival}>
-                                    Visa on arrival
-                                </li>
-                                <li
-                                    style={{
-                                        background: showRequired === true ? '#D93E69' : 'rgb(0, 160, 19, 0.1)',
-                                        color: showRequired === true ? 'white' : '#001B03'
-                                    }}
-                                    onClick={this.showRequired}>
-                                    Visa required
-                                </li>
-                            </div>
                         </div>
-                        <div className={styles.dashboardSidepanelCountryList}>
-                            {list.map((item, i) => (
-                                <Link className={styles.dashboardSidepanelCountryListItem}
-                                    key={i}
-                                    to={`${this.props.match.url}/${item.slug}`} >
-                                    <h3>
-                                        {item.name}
-                                    </h3>
-                                    <p>{item.capital}  </p>
-                                </Link>
-                            ))
-                            }
+
+                        <div className={styles.countryDetails}>
+                            <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
+                            <MapBox countryList={list} links={this.props.match.url} />
                         </div>
-                    </div>
 
-                    <div className={styles.countryDetails}>
-                        <Route path={`${this.props.match.path}/:destinationSlug`} component={DestinationDetails} />
-                        <MapBox countryList={list} links={this.props.match.url} />
-                    </div>
-
-                </div >
-            )
+                    </div >
+                )
+            }
+            else {
+                return (
+                    <p>Page does not exist</p>
+                )
+            }
         }
         else {
             return (
@@ -154,11 +166,16 @@ class Dashboard extends React.Component {
 
 }
 
-function mapStateToProps({ sourceCountry, passportValidCountryList }) {
+function mapStateToProps({ sourceCountry, passportValidCountryList, countries }) {
     const tmp = Object.values(passportValidCountryList)
     const arrivalList = []
     const freeList = []
     const requiredList = []
+    const stateSlugs = []
+    const tmp2 = Object.values(countries)
+    tmp2.map((item) => {
+        stateSlugs.push(item.slug)
+    })
 
     tmp.map((item) => {
         switch (item.visa) {
@@ -185,7 +202,8 @@ function mapStateToProps({ sourceCountry, passportValidCountryList }) {
         freeList,
         requiredList,
         sourceCountry,
-        passportValidCountryList
+        passportValidCountryList,
+        stateSlugs
     }
 
 }
