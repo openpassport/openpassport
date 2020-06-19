@@ -65,7 +65,6 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        console.log("from url", this.props.match.params.homeSlug)
         const { showArrival, showRequired, showVisaFree } = this.state
         const { loading, sourceCountry, requiredList, freeList, arrivalList, stateSlugs } = this.props
         const list = showVisaFree === true
@@ -74,7 +73,6 @@ class Dashboard extends React.Component {
                 ? requiredList
                 : arrivalList
         const valid = stateSlugs.filter((item) => item === this.props.match.params.homeSlug ? true : false)
-        console.log("$$$$%%%", valid)
 
         if (!loading) {
             if (valid.length > 0) {
@@ -197,7 +195,7 @@ function mapStateToProps({ sourceCountry, passportValidCountryList, countries })
     })
 
     return {
-        loading: (sourceCountry === null) || (Object.keys(sourceCountry).length === 0),
+        loading: (sourceCountry === null) || (Object.keys(sourceCountry).length === 0) && (countries === null) || (Object.keys(countries).length === 0),
         arrivalList,
         freeList,
         requiredList,
