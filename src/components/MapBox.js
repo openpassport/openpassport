@@ -192,7 +192,6 @@ class MapBox extends React.Component {
             if (e.features.length > 0) {
                 var cord = e.features[0].geometry.coordinates
                 var nam = e.features[0].properties.name
-                console.log("hei", this.props)
                 new mapboxgl.Popup()
                     .setLngLat(cord)
                     .setHTML(nam)
