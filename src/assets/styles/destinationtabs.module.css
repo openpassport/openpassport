@@ -3,3 +3,29 @@
   height: 100%;
   z-index: 3;
 }
+
+.quickFactsContainer label{
+  margin-left: .5rem;
+  color: #4a4a4a;
+  font-size: .9rem;
+}
+
+.quickFactsContainer h6 {
+  font-size: .9rem;
+  color: #0a0a0a;
+  font-weight:500;
+}
+
+.quickFactsContainer li {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  justify-content: space-between;
+  margin: .5rem 0;
+  padding: .5rem 0.75rem;
+}
+
+.quickFactsContainer li > div {
+  display: flex;
+  flex-direction: row;
+}

@@ -171,9 +171,9 @@ function mapStateToProps({ sourceCountry, passportValidCountryList, countries })
     const requiredList = []
     const stateSlugs = []
     const tmp2 = Object.values(countries)
-    tmp2.map((item) => {
+    tmp2.map((item) => (
         stateSlugs.push(item.slug)
-    })
+    ))
 
     tmp.map((item) => {
         switch (item.visa) {
@@ -195,7 +195,7 @@ function mapStateToProps({ sourceCountry, passportValidCountryList, countries })
     })
 
     return {
-        loading: (sourceCountry === null) || (Object.keys(sourceCountry).length === 0) && (countries === null) || (Object.keys(countries).length === 0),
+        loading: (sourceCountry === null) || (Object.keys(sourceCountry).length === 0) || (countries === null) || (Object.keys(countries).length === 0),
         arrivalList,
         freeList,
         requiredList,

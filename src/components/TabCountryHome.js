@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styles from '../assets/styles/destinationtabs.module.css'
 
 class TabCountryHome extends React.Component {
 
@@ -15,7 +16,7 @@ class TabCountryHome extends React.Component {
                         </p>
                     </div>
                 }
-                <div className="country-details-drawer-info">
+                {/* <div className="country-details-drawer-info">
                     <div className="country-details-drawer-info-item">
                         <div>
                             <img alt='weather' src={require('../assets/images/weather.svg')} width='52px' />
@@ -34,7 +35,7 @@ class TabCountryHome extends React.Component {
                             <h5>$740+</h5>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className='country-details-drawer-subsection'>
                     <h5>VISA REQUIREMENTS</h5>
                     <ul>
@@ -51,6 +52,78 @@ class TabCountryHome extends React.Component {
                     <li>
                         <a target="_blank" rel="noopener noreferrer" href={item.destination["link"].tourism}>Tourism</a>
                     </li>
+                </div>
+                <div className='country-details-drawer-subsection'>
+                    <h5>QUICK FACTS</h5>
+                    <ul className={styles.quickFactsContainer}>
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/capital.svg')} height='24' />
+                                <label> Capital</label>
+                            </div>
+                            <div>
+                                <h6>Berlin</h6>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/timezone.svg')} height='24' />
+                                <label> Time Zone</label>
+                            </div>
+                            <div>
+                                <h6>GMT -1</h6>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/currency.svg')} height='24' />
+                                <label> Currency</label>
+                            </div>
+                            <div>
+                                <h6>Euro (85 INR)</h6>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/language.svg')} height='24' />
+                                <label> Official Language</label>
+                            </div>
+                            <div>
+                                <h6>German</h6>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/dialingcode.svg')} height='24' />
+                                <label> Dialing Code</label>
+                            </div>
+                            <div>
+                                <h6>+49</h6>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/emergencynumber.svg')} height='24' />
+                                <label> Emergency Number</label>
+                            </div>
+                            <div>
+                                <h6>112</h6>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <img alt='capital' src={require('../assets/images/destination-details/driving.svg')} height='24' />
+                                <label> Driving</label>
+                            </div>
+                            <div>
+                                <h6>On the right side</h6>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
 
             </div>
